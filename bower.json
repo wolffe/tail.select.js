@@ -1,0 +1,28 @@
+{
+    "name": "tail.select",
+    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
+    "keywords": [
+        "select",
+        "selection",
+        "selectable",
+        "dropdown",
+        "choose",
+        "vanilla",
+        "tail"
+    ],
+    "authors": [
+        "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+        "pytesNET <info@pytes.net> (https://www.pytes.net)"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/pytesNET/tail.select",
+
+    "main": [
+        "js/tail.select-full.js",
+        "css/default/tail.select-light.css"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+    }
+}

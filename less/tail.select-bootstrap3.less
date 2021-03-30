@@ -1,0 +1,661 @@
+//
+//  tail.select - The vanilla solution to make your HTML select fields AWESOME!
+//  @file       ./less/tail.select-bootstrap3.less
+//  @author     SamBrishes <sam@pytes.net>
+//  @version    0.5.14 - Beta
+//
+//  @website    https://github.com/pytesNET/tail.select
+//  @license    X11 / MIT License
+//  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
+//
+@import "tail.mixins.less";
+
+//
+//  SETTINGS :: ALPHA COLOR
+//
+@alpha: transparent;
+
+//
+//  SETTINGS :: FONT FAMILY
+//
+@family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//
+//  SETTINGS :: USED COLOR SCHEME
+//  The available settings are:
+//      default     (White)
+//      primary     (Dark Blue)
+//      info        (Light Blue)
+//      success     (Green)
+//      warning     (Orange)
+//      danger      (Red)
+//      funky       (Pink)
+//      mystery     (Purple)
+//      invert      (Black)
+//
+@color: default;
+
+//
+//  SETTINGS :: MAIN COLOR SCHEME
+//
+#scheme(){
+    primary: @alpha;            // Get set by the color schemes below
+    secondary: @alpha;          // Get set by the color schemes below
+    foreground: @alpha;         // Get set by the color schemes below
+    foreground: @alpha;         // Get set by the color schemes below
+
+    .mark(){
+        foreground: white;
+        background: @secondary;
+    }
+    .button(){
+        .all(){
+            foreground: #AAAAAA;
+            background: @alpha;
+            separators: #CCCCCC;
+
+            .hover(){
+                foreground: #62C462;
+                background: @alpha;
+                separators: #62C462;
+            }
+            .disabled(){
+                foreground: #CCCCCC;
+                background: #F0F0F0;
+                separators: #CCCCCC;
+            }
+        }
+        .none(){
+            foreground: #AAAAAA;
+            background: @alpha;
+            separators: #CCCCCC;
+
+            .hover(){
+                foreground: #EE5F5B;
+                background: @alpha;
+                separators: #EE5F5B;
+            }
+            .disabled(){
+                foreground: #CCCCCC;
+                background: #F0F0F0;
+                separators: #CCCCCC;
+            }
+        }
+    }
+    .input(){
+        foreground: #scheme[foreground];
+        background: @alpha;
+        separators: #scheme[separators];
+
+        .hover(){
+            foreground: #scheme[foreground];
+            background: @alpha;
+            separators: darken(#scheme[separators], 10%);
+        }
+        .focus(){
+            foreground: @secondary;
+            background: @alpha;
+            separators: @secondary;
+        }
+        .disabled(){
+            foreground: lighten(#scheme[separators], 10%);
+            background: lighten(#scheme[separators], 10%);
+            separators: #scheme[separators];
+        }
+    }
+    .handle(){
+        foreground: white;
+        background: @secondary;
+
+        .hover(){
+            foreground: white;
+            background: darken(@secondary, 15%);
+        }
+    }
+    .label(){
+        foreground: white;
+        background: @primary;
+        separators: #scheme[separators];
+
+        .active(){
+            foreground: white;
+            background: darken(@primary, 10%);
+            separators: #scheme[separators];
+        }
+    }
+    .dropdown(){
+        foreground: #scheme[foreground];
+        background: white;
+        separators: darken(white, 10%);
+    }
+    .optgroup(){
+        foreground: fadeout(#scheme[foreground], 30%);
+        background: @alpha;
+    }
+    .option(){
+        foreground: #scheme[foreground];
+        background: @alpha;
+
+        .hover(){
+            foreground: #scheme[foreground];
+            background: mix(#scheme[primary], lighten(#scheme[foreground], 80%), 5%);
+        }
+        .active(){
+            foreground: @secondary;
+            background: @alpha;
+        }
+        .disabled(){
+            foreground: fadeout(#scheme.option[foreground], 65%);
+            background: fade(#scheme.option.hover[foreground], 2%);;
+        }
+    }
+    .description(){
+        foreground: fadeout(#scheme[foreground], 30%);
+
+        .hover(){
+            foreground: fadeout(#scheme[foreground], 30%);
+        }
+        .active(){
+            foreground: fadeout(#scheme[foreground], 30%);
+        }
+        .disabled(){
+            foreground: #scheme.option.disabled[foreground];
+        }
+    }
+}
+
+//
+//  SETTINGS :: COLORIZED COLOR SCHEMES
+//
+#scheme() when (@color = default){
+    primary: white;
+    secondary: #0088CC;
+    foreground: #333333;
+    separators: #CCCCCC;
+
+    .label(){
+        foreground: #333333;
+        separators: #CCCCCC;
+    }
+}
+#scheme() when (@color = primary){
+    primary: #337AB7;
+    secondary: #337AB7;
+    foreground: #333333;
+    separators: darken(#337AB7, 15%);
+}
+#scheme() when (@color = info){
+    primary: #5BC0DE;
+    secondary: #5BC0DE;
+    foreground: #333333;
+    separators: darken(#5BC0DE, 15%);
+}
+#scheme() when (@color = success){
+    primary: #5CB85C;
+    secondary: #5CB85C;
+    foreground: #333333;
+    separators: darken(#5CB85C, 15%);
+}
+#scheme() when (@color = warning){
+    primary: #F0DE4E;
+    secondary: #F0DE4E;
+    foreground: #333333;
+    separators: darken(#F0DE4E, 15%);
+}
+#scheme() when (@color = danger){
+    primary: #D9534F;
+    secondary: #D9534F;
+    foreground: #333333;
+    separators: darken(#D9534F, 15%);
+}
+#scheme() when (@color = invert){
+    primary: #333333;
+    secondary: #333333;
+    foreground: #333333;
+    separators: #181818;
+}
+@primary: #scheme[primary];         // @ignore
+@secondary: #scheme[secondary];     // @ignore
+
+
+//
+//  STYLES
+//
+
+/* @start GENERAL */
+.tail-select{
+    &, *, *:before, *:after{
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    &, *{
+        outline: none;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+}
+.tail-select{
+    width: 275px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.42857143;
+    font-family: @family;
+
+    mark{
+        color: #scheme.mark[foreground];
+        background-color: #scheme.mark[background];
+    }
+    button{
+        outline: none;
+
+        &.tail-all, &.tail-none{
+            height: auto;
+            margin: 0 2px;
+            padding: 2px 6px;
+            display: inline-block;
+            font-size: 10px;
+            line-height: 14px;
+            text-shadow: none;
+            letter-spacing: 0;
+            text-transform: none;
+            vertical-align: top;
+            .border(1px; solid; @alpha; 3px;);
+            .shadow(none;);
+            .transition(color 142ms linear, border 142ms linear, background 142ms linear;);
+        }
+        &.tail-all{
+            color: #scheme.button.all[foreground];
+            border-color: #scheme.button.all[separators];
+            background-color: #scheme.button.all[background];
+
+            &:hover{
+                color: #scheme.button.all.hover[foreground];
+                border-color: #scheme.button.all.hover[separators];
+                background-color: #scheme.button.all.hover[background];
+            }
+        }
+        &.tail-none{
+            color: #scheme.button.none[foreground];
+            border-color: #scheme.button.none[separators];
+            background-color: #scheme.button.none[background];
+        
+            &:hover{
+                color: #scheme.button.none.hover[foreground];
+                border-color: #scheme.button.none.hover[separators];
+                background-color: #scheme.button.none.hover[background];
+            }
+        }
+    }
+    &.disabled{
+        button.tail-all{
+            color: #scheme.button.all.disabled[foreground];
+            border-color: #scheme.button.all.disabled[separators];
+            background-color: #scheme.button.all.disabled[background];
+        }
+        button.tail-none{
+            color: #scheme.button.none.disabled[foreground];
+            border-color: #scheme.button.none.disabled[separators];
+            background-color: #scheme.button.none.disabled[background];
+        }
+    }
+    input[type="text"]{
+        color: #scheme.input[foreground];
+        width: 100%;
+        height: 30px;
+        margin: 0;
+        padding: 4px 6px;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 30px;
+        vertical-align: middle;
+        background-color: #scheme.input[background];
+        .border(1px; solid; #scheme.input[separators]; 3px;);
+        .shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075););
+        .transition(border 142ms linear, box-shadow 142ms linear;);
+
+        &:hover{
+            color: #scheme.input.hover[foreground];
+            border-color: #scheme.input.hover[separators];
+            background-color: #scheme.input.hover[background];
+        }
+        &:focus{
+            color: #scheme.input.focus[foreground];
+            border-color: #scheme.input.focus[separators];
+            background-color: #scheme.input.focus[background];
+        }
+    }
+    &.disabled{
+        input[type="text"]{
+            color: #scheme.input.disabled[foreground];
+            border-color: #scheme.input.disabled[separators];
+            background-color: #scheme.input.disabled[background];
+        }
+    }
+}
+.tail-select-container{
+    margin: 0;
+    padding: 3px;
+    text-align: left;
+    border-radius: 3px;
+
+    .select-handle{
+        width: auto;
+        color: #scheme.handle[foreground];
+        cursor: pointer;
+        margin: 1px;
+        padding: .2em .6em .3em;
+        display: inline-block;
+        position: relative;
+        font-size: 11.844px;
+        text-align: left;
+        font-weight: bold;
+        line-height: 16px;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        vertical-align: top;
+        background-color: #scheme.handle[background];
+        .border(0; solid; @alpha; 3px;);
+        .transition(background 142ms linear;);
+
+        &:hover{
+            color: #scheme.handle.hover[foreground];
+            background-color: #scheme.handle.hover[background];
+        }
+    }
+    &.select-label .select-handle{
+        margin: 5px 3px;
+    }
+}
+/* @end GENERAL */
+
+/* @start LABEL */
+.tail-select .select-label{
+    cursor: pointer;
+    color: #scheme.label[foreground];
+    width: 100%;
+    margin: 0;
+    padding: 0 30px 0 0;
+    display: block;
+    position: relative;
+    text-align: left;
+    background-color: #scheme.label[background];
+    .border(1px; solid; #scheme.label[separators]; 3px;);
+    .transition(background 142ms linear;);
+
+    &:before, &:after{
+        margin: 0;
+        padding: 0;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        text-shadow: none;
+        vertical-align: top;
+    }
+    &:after{
+        top: 0;
+        right: 0;
+        width: 34px;
+        height: 34px;
+        z-index: 24;
+        background-color: #scheme.label[background];
+        .border(0 0 0 1px; solid; #scheme.label[separators]; 0 2px 2px 0;);
+    }
+    &:before{
+        top: 7px;
+        right: 12px;
+        width: 0;
+        height: 0;
+        margin-top: 9px;
+        z-index: 25;
+        border-top: 5px dashed;
+        border-top: 5px solid\9;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        text-shadow: none;
+        .transition(transform 142ms linear;);
+    }
+    &:hover, &:hover:after{
+        border-color: darken(#scheme.label[separators], 10%);
+    }
+    &:hover:after{
+        background-color: darken(#scheme.label[background], 10%);
+    }
+    .label-count, .label-inner{
+        width: auto;
+        margin: 0;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+    }
+    .label-count{
+        float: left;
+        color: #scheme.label[background];
+        margin: 8px -2px 8px 8px;
+        padding: 2px 9px;
+        display: inline-block;
+        font-size: 11.844px;
+        font-weight: bold;
+        line-height: 14px;
+        text-shadow: none;
+        white-space: nowrap;
+        border-radius: 3px;
+        background-color: #scheme.label[foreground];
+    }
+    .label-inner{
+        padding: 9px 10px 7px 10px;
+        display: block;
+        overflow: hidden;
+        line-height: 18px;
+        white-space: nowrap;    
+        text-overflow: ellipsis;
+    }
+}
+.tail-select.active .select-label{
+    border-color: darken(#scheme.label[separators], 15%);
+
+    &:after{
+        border-color: darken(#scheme.label[separators], 15%);
+        background-color: darken(#scheme.label[background], 15%);
+        .shadow(inset 0 3px 5px rgba(0, 0, 0, 0.125););
+    }
+    &:before{
+        .transform(rotate(180deg););
+    }
+}
+/* @end LABEL */
+
+/* @start DROPDOWN */
+.tail-select .select-dropdown{
+    top: 100%;
+    left: 0;
+    color: #scheme.dropdown[foreground];
+    width: 100%;
+    margin: 2px 0 0;
+    padding: 0;
+    z-index: 27;
+    display: none;
+    position: absolute;
+    background-color: #scheme.dropdown[background];
+    .border(1px; solid; rgba(0, 0, 0, 0.15); 3px;);
+    .shadow(0 6px 12px rgba(0, 0, 0, 0.175););
+
+    .dropdown-search{
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        display: block;
+        .border(0 0 1px 0; solid; #scheme.dropdown[separators];);
+    }
+    .dropdown-inner{
+        width: 100%;
+        margin: 0;
+        padding: 1px 0;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .dropdown-empty{
+        margin: 0;
+        padding: 9px 0;
+        display: block;
+        font-size: 12px;
+        text-align: center;
+    }
+    .dropdown-action{
+        top: 8px;
+        right: 15px;
+        width: auto;
+        margin: 0;
+        padding: 7px 0;
+        z-index: 35;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+    }
+    ul, ul li{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+        position: relative;
+        list-style: none;
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: top;
+    }
+    ul li{
+        color: #scheme[foreground];
+        padding: 5px 26px;
+        text-align: left;
+        font-weight: normal;
+
+        &:first-of-type{
+            margin-top: 7px;
+        }
+        &:last-of-type{
+            margin-bottom: 7px;
+        }
+        &.optgroup-title{
+            color: #scheme.optgroup[foreground];
+            cursor: default;
+            margin: 9px 0 0 0;
+            padding: 3px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 20px;
+            text-shadow: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            button{
+                float: right;
+                opacity: 0;
+            }
+        }
+    }
+    ul:hover li button{
+        opacity: 1;
+    }
+
+    // Dropdown Options
+    ul li.dropdown-option{
+        cursor: pointer;
+        color: #scheme.option[foreground];
+
+        &:before{
+            top: 2px;
+            left: 0;
+            width: 26px;
+            height: 26px;
+            margin: 0;
+            padding: 0;
+            z-index: 21;
+            display: inline-block;
+            content: "";
+            position: absolute;
+            vertical-align: top;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .option-description{
+            color: #scheme.description[foreground];
+            width: auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 10px;
+            text-align: left;
+            line-height: 14px;
+            vertical-align: top;
+        }
+    }
+}
+.tail-select.hide-selected .select-dropdown ul li.selected,
+.tail-select.hide-disabled .select-dropdown ul li.disabled{
+    display: none;
+}
+
+/* Selected */
+.tail-select .select-dropdown ul li.dropdown-option.selected{
+    color: #scheme.option.active[foreground];
+    background-color: #scheme.option.active[background];
+
+    &:before{
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+        9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNMTIgNWwtOCA4LTQtN\
+        CAxLjUtMS41TDQgMTBsNi41LTYuNUwxMiA1eiIvPjwvc3ZnPg==");
+    }
+    .option-description{
+        color: #scheme.description.active[foreground];
+    }
+}
+
+/* Unselect */
+.tail-select.deselect, .tail-select.multiple {
+     .select-dropdown ul li.dropdown-option.selected {
+         &:hover, &.hover {
+            &:before{
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+                9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
+                y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
+                LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
+            }
+        }
+    }
+}
+/* Hover */
+.tail-select .select-dropdown ul li.dropdown-option {
+    transition: all 0.3s ease-out;
+
+    &:hover, &.hover{
+        color: #scheme.option.hover[foreground];
+        background-color: #scheme.option.hover[background];
+        transition: all 0.4s ease;   
+        .option-description{
+            color: #scheme.description.hover[foreground];
+        }        
+    }
+}
+/* Disabled */
+.tail-select{
+    &.disabled .select-dropdown ul li.dropdown-option, 
+    .select-dropdown ul li.dropdown-option.disabled{
+        cursor: not-allowed;
+        color: #scheme.option.disabled[foreground];
+        text-shadow: 0px 1px 0px fade(lighten(#scheme.option.disabled[foreground],10%),10%), 0px -1px 0px fade(darken(#scheme.option.disabled[foreground],10%),10%);
+        background-color: #scheme.option.disabled[background];
+
+        &, &:hover, &.hover{
+            .option-description{
+                color: #scheme.description.disabled[foreground];
+            }
+        }
+    }
+}
+/* @end DROPDOWN */

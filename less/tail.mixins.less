@@ -1,0 +1,70 @@
+//
+//  tail.select - The vanilla solution to make your HTML select fields AWESOME!
+//  @file       ./less/tail.mixins.less
+//  @author     SamBrishes <sam@pytes.net>
+//  @version    0.5.14 - Beta
+//
+//  @website    https://github.com/pytesNET/tail.select
+//  @license    X11 / MIT License
+//  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
+//
+
+//
+//  MIXINS :: BORDER
+//
+.border(@width: 1px; @style: solid; @color: transparent;){
+    border-width: @width;
+    border-style: @style;
+    border-color: @color;
+}
+
+//
+//  MIXINS :: BORDER \W RADIUS
+//
+.border(@width; @style; @color; @radius;){
+    border-width: @width;
+    border-style: @style;
+    border-color: @color;
+    border-radius: @radius;
+}
+
+//
+//  MIXINS :: BOX SHADOW
+//
+.shadow(@shadow: none;){
+    box-shadow: @shadow;
+    -webkit-box-shadow: @shadow;
+}
+
+//
+//  MIXINS :: TRANSITION
+//
+.transition(@transition: none;){
+    transition: @transition;
+    -webkit-transition: @transition;
+}
+
+//
+//  MIXINS :: TRANSFORM
+//
+.transform(@transform: none;){
+    transform: @transform;
+    -moz-transform: @transform;
+    -webkit-transform: @transform;
+}
+
+//
+//  MIXINS :: GRADIENT
+//
+.gradient(@start, @end) when (alpha(@end) > 0){
+    background-color: @end;
+    background-image: linear-gradient(to bottom, @start, @end);
+    background-image: -o-linear-gradient(top, @start, @end);
+    background-image: -moz-linear-gradient(top, @start, @end);
+    background-image: -webkit-linear-gradient(top, @start, @end);
+    background-repeat: repeat-x;
+}
+.gradient(@start, @end) when (alpha(@end) = 0){
+    background-color: @start;
+    background-image: none;
+}
