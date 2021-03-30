@@ -12,7 +12,9 @@ extend your HTML `<select>` fields... again! Add a search bar, multi-selection u
 select all or none buttons), deselectability on single select fields, a perfect design and many 
 more user-friendly functions to your web-application.
 
-# This library has been taken over and a version `0.6` is in the works. Most of the links below are dead and the documentation is done. It's a great library which deserves to live on.
+# This library has been taken over and a version `0.6` is in the works. Most of the links below are dead and the documentation is gone. It's a great library which deserves to live on.
+
+# Patches wanted!
 
 ----------------------------
 
