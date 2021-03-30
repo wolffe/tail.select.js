@@ -2,20 +2,17 @@ tail.select - Beautify Select Fields
 ====================================
 [![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
 [![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
-[![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
 [![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
 [![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
 **Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
-<p align="center" style="text-align:center"><a href="https://github.pytes.net/tail.select">
-<img src="https://repository-images.githubusercontent.com/150568173/e3ebbd80-a27d-11e9-9da1-c6caa6484bcc" style="width:auto;max-width:640px;" />
-</a></p>
-
 The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and 
 extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as 
 select all or none buttons), deselectability on single select fields, a perfect design and many 
 more user-friendly functions to your web-application.
+
+# This library has been taken over and a version `0.6` is in the works. Most of the links below are dead and the documentation is done. It's a great library which deserves to live on.
 
 ----------------------------
 
