@@ -16,6 +16,8 @@ more user-friendly functions to your web-application.
 
 # Patches wanted!
 
+# [A placeholder homepage is here](https://getbutterfly.com/tail-select/)
+
 ----------------------------
 
 [Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
