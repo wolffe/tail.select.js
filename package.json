@@ -1,7 +1,7 @@
 {
     "name": "tail.select",
-    "version": "0.5.15",
-    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
+    "version": "0.5.16",
+    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla JavaScript without any dependencies!",
     "keywords": [
         "select",
         "selection",
@@ -11,18 +11,18 @@
         "vanilla",
         "tail"
     ],
-    "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+    "author": "wolffe <getbutterfly@gmail.com> (https://getbutterfly.com)",
     "license": "MIT",
-    "homepage": "https://github.com/pytesNET/tail.select",
+    "homepage": "https://getbutterfly.com/tail-select/",
 
     "main": "js/tail.select.js",
     "bugs": {
-        "url": "https://github.com/pytesNET/tail.select/issues",
-        "email": "info@pytes.net"
+        "url": "https://github.com/wolffe/tail.select/issues",
+        "email": "getbutterfly@gmail.com"
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+        "url": "git+ssh://git@github.com/wolffe/tail.select.git"
     },
     "devDependencies": {
         "less": ">=3.5.0",
