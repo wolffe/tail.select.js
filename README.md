@@ -1,35 +1,30 @@
 tail.select.js - Beautify Select Fields (formerly tail.select)
 ====================================
-[![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
-[![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
-[![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
-[![License](https://s.pytes.me/8257ac72)](LICENSE.md)
+
+![npm](https://img.shields.io/npm/v/tail.select.js?style=flat-square)
+![npm](https://img.shields.io/npm/dw/tail.select.js?style=flat-square)
+![NPM](https://img.shields.io/npm/l/tail.select.js?style=flat-square)
 
 **Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
-The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and 
-extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as 
-select all or none buttons), deselectability on single select fields, a perfect design and many 
-more user-friendly functions to your web-application.
+The **tail.select** script is back as **tail.select.js**, rewritten in vanilla JavaScript and ready to beautify and extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as select all or none buttons), deselectability on single select fields, a perfect design and many more user-friendly functions to your web application.
 
 # This library has been taken over and a version `0.6` is in the works. Most of the links below are dead and the documentation is gone. It's a great library which deserves to live on.
 
 # Patches wanted!
 
-# [A placeholder homepage is here](https://getbutterfly.com/tail-select/)
+# [The new homepage is here!](https://getbutterfly.com/tail-select/)
 
 ----------------------------
 
-[Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
-
-[Wanna translate **tail.select** in your language?](https://github.com/pytesNET/tail.select/wiki/Help-Translating)
+[Want so see **tail.select** in action?](https://getbutterfly.com/tail-select/)
 
 Support
 -------
-<p align="center" atyle="text-align:center">
-You really like my <b>tail.select</b> script and want to support me and all of my projects?<br/>
-Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b>)<br/><br/>
-<a href="https://www.buymeacoffee.com/pytesNET"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" title="Buy Me A Coffee" /></a>
+<p style="text-align: center">
+    You really like my <b>tail.select</b> script and want to support me and all of my projects?<br>
+    Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b>)<br><br>
+    <a href="https://www.buymeacoffee.com/wolffe"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 </p>
 
 Features
@@ -49,8 +44,8 @@ Features
 Install & Embed
 ---------------
 The master branch will always contain the latest Release, which you can download directly here
-as [.tar](https://github.com/pytesNET/tail.select/tarball/master) or as [.zip](https://github.com/pytesNET/tail.select/zipball/master)
-archive, or just visit the [Releases](https://github.com/pytesNET/tail.select/releases) Page
+as [.tar](https://github.com/wolffe/tail.select.js/tarball/master) or as [.zip](https://github.com/wolffe/tail.select.js/zipball/master)
+archive, or just visit the [Releases](https://github.com/wolffe/tail.select.js/releases) Page
 on GitHub directly. You can also be cool and using npm, Yarn or bower:
 
 ```markup
@@ -84,27 +79,27 @@ Thanks To
 -   [MenuSpy](https://github.com/lcdsantos/menuspy) for the Menu Navigation
 
 ### Translations
--   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/pytesNET/tail.select/issues/11)
--   [Igor](https://github.com/igorcm) / [Brazilian Portuguese Translation](https://github.com/pytesNET/tail.select/pull/34)
--   [Noxludio](https://github.com/noxludio) / [Finnish Translation](https://github.com/pytesNET/tail.select/pull/35)
--   [Roman Yepanchenko](https://github.com/tizis) / [Russian Translation](https://github.com/pytesNET/tail.select/issues/38)
--   [elPesecillo](https://github.com/elPesecillo) / [Spanish Translation](https://github.com/pytesNET/tail.select/issues/41)
--   [Alberto Vincenzi](https://github.com/albertovincenzi) / [Italian Translation](https://github.com/pytesNET/tail.select/issues/43)
--   [WoxVold](https://github.com/woxwold) / [Norwegish Translation](https://github.com/pytesNET/tail.select/issues/45)
--   [Spritus](https://github.com/spritus) / [Turkish Translation](https://github.com/pytesNET/tail.select/issues/48)
+-   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/wolffe/tail.select.js/issues/11)
+-   [Igor](https://github.com/igorcm) / [Brazilian Portuguese Translation](https://github.com/wolffe/tail.select.js/pull/34)
+-   [Noxludio](https://github.com/noxludio) / [Finnish Translation](https://github.com/wolffe/tail.select.js/pull/35)
+-   [Roman Yepanchenko](https://github.com/tizis) / [Russian Translation](https://github.com/wolffe/tail.select.js/issues/38)
+-   [elPesecillo](https://github.com/elPesecillo) / [Spanish Translation](https://github.com/wolffe/tail.select.js/issues/41)
+-   [Alberto Vincenzi](https://github.com/albertovincenzi) / [Italian Translation](https://github.com/wolffe/tail.select.js/issues/43)
+-   [WoxVold](https://github.com/woxwold) / [Norwegish Translation](https://github.com/wolffe/tail.select.js/issues/45)
+-   [Spritus](https://github.com/spritus) / [Turkish Translation](https://github.com/wolffe/tail.select.js/issues/48)
 
 Documentation
 -------------
-The Documentation has been moved to [GitHubs Wiki Pages](https://github.com/pytesNET/tail.select/wiki),
+The Documentation has been moved to [GitHubs Wiki Pages](https://github.com/wolffe/tail.select.js/wiki),
 but I will keep a table of contents list here and some basic instructions.
 
--   [Install & Embed](https://www.github.com/pytesNET/tail.select/wiki/instructions)
--   [Default Usage](https://www.github.com/pytesNET/tail.select/wiki/default-usage)
--   [Public Options](https://www.github.com/pytesNET/tail.select/wiki/public-options)
--   [Public Methods](https://www.github.com/pytesNET/tail.select/wiki/public-methods)
--   [Events & Callbacks](https://www.github.com/pytesNET/tail.select/wiki/events-callbacks)
--   [Internal Variables & Methods](https://www.github.com/pytesNET/tail.select/wiki/internal)
--   [HowTos, Tips & Tricks](https://www.github.com/pytesNET/tail.select/wiki/How-Tos)
+-   [Install & Embed](https://www.github.com/wolffe/tail.select.js/wiki/instructions)
+-   [Default Usage](https://www.github.com/wolffe/tail.select.js/wiki/default-usage)
+-   [Public Options](https://www.github.com/wolffe/tail.select.js/wiki/public-options)
+-   [Public Methods](https://www.github.com/wolffe/tail.select.js/wiki/public-methods)
+-   [Events & Callbacks](https://www.github.com/wolffe/tail.select.js/wiki/events-callbacks)
+-   [Internal Variables & Methods](https://www.github.com/wolffe/tail.select.js/wiki/internal)
+-   [HowTos, Tips & Tricks](https://www.github.com/wolffe/tail.select.js/wiki/How-Tos)
 
 ### Files
 The `tail.select` package contains different JavaScript files:
@@ -147,7 +142,7 @@ second parameter is optional and, if set, MUST be an object with your *tail.sele
 ```
 
 ### Default options
-Please check out [GitHubs Wiki Pages](https://github.com/pytesNET/tail.select/wiki) to read more
+Please check out [GitHubs Wiki Pages](https://github.com/wolffe/tail.select.js/wiki) to read more
 about each single option!
 
 ```javascript
@@ -205,4 +200,5 @@ tail.select("select", {
 
 Copyright & License
 -------------------
+Published under the MIT-License; Copyright &copy; 2020 - 2021 wolffe
 Published under the MIT-License; Copyright &copy; 2014 - 2019 SamBrishes, pytesNET
