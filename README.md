@@ -1,4 +1,4 @@
-tail.select - Beautify Select Fields
+tail.select.js - Beautify Select Fields (formerly tail.select)
 ====================================
 [![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
 [![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)

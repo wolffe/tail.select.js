@@ -1,5 +1,5 @@
 {
-    "name": "tail.select",
+    "name": "tail.select.js",
     "version": "0.5.16",
     "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla JavaScript without any dependencies!",
     "keywords": [
@@ -17,12 +17,12 @@
 
     "main": "js/tail.select.js",
     "bugs": {
-        "url": "https://github.com/wolffe/tail.select/issues",
+        "url": "https://github.com/wolffe/tail.select.js/issues",
         "email": "getbutterfly@gmail.com"
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/wolffe/tail.select.git"
+        "url": "git+ssh://git@github.com/wolffe/tail.select.js.git"
     },
     "devDependencies": {
         "less": ">=3.5.0",
