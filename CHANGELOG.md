@@ -1,6 +1,10 @@
 CHANGELOG
 ===========
 
+Version 0.5.17
+--------------
+- New repository
+
 Version 0.5.15 - Beta
 ---------------------
 -   Update: Support for `hidden` options (didn't get queried).
