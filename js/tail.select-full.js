@@ -1,11 +1,13 @@
 /*
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./js/tail.select-full.js
+ |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.15 - Beta
+ |  @version    0.5.18
  |
- |  @website    https://github.com/pytesNET/tail.select
+ |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License
+ |  @copyright  Copyright © 2020 - 2021 wolffe <getbutterfly@gmail.com>
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
 ;(function(root, factory){

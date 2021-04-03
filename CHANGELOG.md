@@ -1,6 +1,10 @@
 CHANGELOG
 ===========
 
+Version 0.5.18
+--------------
+- New repository
+
 Version 0.5.17
 --------------
 - New repository

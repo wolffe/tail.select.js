@@ -106,7 +106,6 @@ The `tail.select` package contains different JavaScript files:
 
 -   `js/tail.select(.min).js` The main JavaScript with `en` tranlation strings only.
 -   `js/tail.select-full(.min).js` The main JavaScript with ALL available translations.
--   `js/tail.select-es6(.min).js` An **experimental** ECMAScript 2015 / ES6 Module version (includes all translations).
 -   `langs/tail.select-all(.min).js` Just ALL translation strings itself.
 -   `langs/tail.select-{locale}.js` Just the {locale} translation strings.
 
@@ -119,25 +118,24 @@ second parameter is optional and, if set, MUST be an object with your *tail.sele
 ```html
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
+<head>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet" href="css/tail.select-default.css">
+</head>
+<body>
+<script src="js/tail.select.min.js"></script>
+<!-- <script src="langs/tail.select-{lang}.js"></script> -->
 
-        <link type="text/css" rel="stylesheet" href="css/tail.select-default.css" />
-    </head>
-    <body>
-        <script type="text/javascript" src="js/tail.select.min.js"></script>
-        <!-- <script type="text/javascript" src="langs/tail.select-{lang}.js"></script> -->
+<select>
+    <option>My Option</option>
+</select>
 
-        <select>
-            <option>My Option</option>
-        </select>
-
-        <script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function(){
-                tail.select("select", { /* Your Options */ });
-            });
-        </script>
-    </body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    tail.select("select", { /* Your Options */ });
+});
+</script>
+</body>
 </html>
 ```
 
