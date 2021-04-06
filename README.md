@@ -64,7 +64,7 @@ bower install tail.select.js --save
 You can also use the awesome CDN services from jsDelivr or UNPKG.
 
 ```markup
-https://www.npmjs.com/package/tail.select.js
+https://cdn.jsdelivr.net/npm/tail.select.js@0.5.18/js/tail.select-full.min.js
 ```
 
 Thanks To
