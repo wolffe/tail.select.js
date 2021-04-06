@@ -49,26 +49,22 @@ archive, or just visit the [Releases](https://github.com/wolffe/tail.select.js/r
 on GitHub directly. You can also be cool and using npm, Yarn or bower:
 
 ```markup
-npm install tail.select --save
+npm install tail.select.js --save
 ```
 
 ```markup
-yarn add tail.select --save
+yarn add tail.select.js --save
 ```
 
 ```markup
-bower install tail.select --save
+bower install tail.select.js --save
 ```
 
 ### Using a CDN
 You can also use the awesome CDN services from jsDelivr or UNPKG.
 
 ```markup
-https://cdn.jsdelivr.net/npm/tail.select@latest/
-```
-
-```markup
-https://unpkg.com/tail.select/
+https://www.npmjs.com/package/tail.select.js
 ```
 
 Thanks To
