@@ -3,7 +3,7 @@
  |  @file       ./js/tail.select-full.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.18
+ |  @version    0.5.19
  |
  |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License

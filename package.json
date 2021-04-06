@@ -1,7 +1,7 @@
 {
     "name": "tail.select.js",
-    "version": "0.5.18",
-    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla JavaScript without any dependencies!",
+    "version": "0.5.19",
+    "description": "Create beautiful, functional and extensive (multi) select fields, written in Vanilla JavaScript without any dependencies!",
     "keywords": [
         "select",
         "selection",
@@ -23,10 +23,6 @@
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/wolffe/tail.select.js.git"
-    },
-    "devDependencies": {
-        "less": ">=3.5.0",
-        "clean-css": ">=4.1.0"
     },
 
     "reveal": true,

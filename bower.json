@@ -1,6 +1,6 @@
 {
     "name": "tail.select.js",
-    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla JavaScript without any dependencies!",
+    "description": "Create beautiful, functional and extensive (multi) select fields, written in Vanilla JavaScript without any dependencies!",
     "keywords": [
         "select",
         "selection",
@@ -15,7 +15,6 @@
     ],
     "license": "MIT",
     "homepage": "https://getbutterfly.com/tail-select/",
-
     "main": [
         "js/tail.select-full.js",
         "css/default/tail.select-light.css"

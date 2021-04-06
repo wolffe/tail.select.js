@@ -68,11 +68,11 @@ https://www.npmjs.com/package/tail.select.js
 ```
 
 ```markup
-https://cdn.jsdelivr.net/npm/tail.select.js@0.5.18/js/tail.select-full.min.js
+https://cdn.jsdelivr.net/npm/tail.select.js@0.5.19/js/tail.select-full.min.js
 ```
 
 ```markup
-https://unpkg.com/browse/tail.select.js@0.5.18/
+https://unpkg.com/browse/tail.select.js@0.5.19/
 ```
 
 Thanks To

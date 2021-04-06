@@ -1,6 +1,12 @@
 CHANGELOG
 ===========
 
+Version 0.5.19
+--------------
+- Remove `less` dependency
+- Remove `clean-css` dependency
+- Fix `package.json` typo
+
 Version 0.5.18
 --------------
 - New repository
