@@ -3,9 +3,10 @@
  |  @file       ./js/tail.select.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.19
+ |  @author     chatumao <adr.heap@gmail.com>
+ |  @version    0.5.20
  |
- |  @website    https://github.com/wolffe/tail.select.js
+ |  @website    https://github.com/chatumao/tail.select.js
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2020 - 2021 wolffe <getbutterfly@gmail.com>
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
@@ -119,9 +120,11 @@
         this.con = clone(select.defaults, config);
         this.events = {};
         select.inst["tail-" + this.id] = this;
-        return this.init().bind();
+        var ret = this.init().bind();
+        
+        return ret;
     }, options;
-    select.version = "0.5.15";
+    select.version = "0.5.20";
     select.status = "beta";
     select.count = 0;
     select.inst = {};
@@ -359,6 +362,7 @@
                 this.open(con.animate);
             }
             (con.cbComplete || function(){ }).call(this, this.select);
+            
             return (this._init = false)? this: this;
         },
 
@@ -369,6 +373,16 @@
         bind: function(){
             var self = this;
 
+            /* Seems to be last call from init */
+            if(typeof this.options_initial === 'undefined'){
+                var init_selected = [];
+                for(var idx = 0; idx < this.options.selected.length; ++idx){
+                    init_selected.push(this.options.selected[idx]);
+                }
+                this.options_initial = {
+                    selected: init_selected
+                }
+            }
             // Keys Listener
             d.addEventListener("keydown", function(event){
                 var key = (event.keyCode || event.which), opt, inner, e, temp, tmp;
@@ -950,6 +964,28 @@
          */
         reload: function(){
             return this.remove().init();
+        },
+
+        /*
+         |  PUBLIC :: RELOAD SELECT
+         |  @since  0.5.20 [0.3.0]
+         */
+        reset: function(){
+            /* Set all to unselected */
+            for(var idx = 0; idx < this.options.element.length; ++idx){
+                this.options.element[idx].selected = false;
+                this.options.unselect(this.options.element[idx].value, "#", true);
+            }
+            
+            /* Restore initial selection */
+            for(var idx = 0; idx < this.options_initial.selected.length; ++idx){
+                this.options_initial.selected[idx].selected = true;
+                this.options.select(this.options_initial.selected[idx].value, "#", true);
+            }
+            
+            /* Reset input field */
+            this.dropdown.querySelector('input').value = '';
+            this.query.call(this, '');
         },
 
         /*
