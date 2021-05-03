@@ -752,7 +752,11 @@
             label = '<span class="label-inner">' + label + '</span>',
             limit = (c.multiShowLimit && c.multiLimit < Infinity);
             if(c.multiple && c.multiShowCount){
-                label = '<span class="label-count">:c</span>' + label;
+                var selected_class = '';
+                if(len){
+                    selected_class = 'tail_selected';
+                }
+                label = '<span class="label-count ' + selected_class + '">:c</span>' + label;
                 label = label.replace(":c", len + (limit? (" / " + c.multiLimit): ""));
             }
             this.label.innerHTML = label;
