@@ -691,8 +691,9 @@
          |  @since  0.5.13 [0.4.0]
          */
         cbItem: function(item, optgroup, search){
+            console.log(item)
             var li = create("LI", "dropdown-option" + (item.selected? " selected": "") + (item.disabled? " disabled": ""));
-
+            li.title = item.option.title;
             // Inner Text
             if(search && search.length > 0 && this.con.searchMarked){
                 search = this.options.applyLinguisticRules(search);
