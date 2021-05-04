@@ -9,7 +9,7 @@ tail.select.js - Beautify Select Fields (formerly tail.select)
 
 The **tail.select** script is back as **tail.select.js**, rewritten in vanilla JavaScript and ready to beautify and extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as select all or none buttons), deselectability on single select fields, a perfect design and many more user-friendly functions to your web application.
 
-# This library has been taken over and a version `0.6` is in the works. Most of the links below are dead and the documentation is gone. It's a great library which deserves to live on.
+# This library has been taken over and a version `0.6` is in the works. It's a great library which deserves to live on.
 
 # Patches wanted!
 
@@ -17,7 +17,7 @@ The **tail.select** script is back as **tail.select.js**, rewritten in vanilla J
 
 ----------------------------
 
-[Want so see **tail.select** in action?](https://getbutterfly.com/tail-select/)
+[Want to see **tail.select** in action?](https://getbutterfly.com/tail-select/)
 
 Support
 -------
@@ -120,10 +120,11 @@ just a single selector as `string`, which calls the `querySelectorAll()` method 
 second parameter is optional and, if set, MUST be an object with your *tail.select* options.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link type="text/css" rel="stylesheet" href="css/tail.select-default.css">
 </head>
 <body>
@@ -131,7 +132,9 @@ second parameter is optional and, if set, MUST be an object with your *tail.sele
 <!-- <script src="langs/tail.select-{lang}.js"></script> -->
 
 <select>
-    <option>My Option</option>
+    <option>My First Option</option>
+    <option>My Second Option</option>
+    <option>My Third Option</option>
 </select>
 
 <script>

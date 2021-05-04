@@ -1,6 +1,12 @@
 CHANGELOG
 ===========
 
+Version 0.5.20
+--------------
+- Add `.label-count--selected` class to count when count is higher than 0.
+- Add a reset function to restore a tail.select instance to the state it had when created. The built-in reload function only clears the underlying select element and rebuilds itself, leaving the actual instance in memory. Doing a repeated reload on the same select element lead to tail.select not picking up the selected option from the select anymore.
+- Transfer `title` attribute from `option` tag to tail.select entry.
+
 Version 0.5.19
 --------------
 - Remove `less` dependency

@@ -16,7 +16,7 @@
     "license": "MIT",
     "homepage": "https://getbutterfly.com/tail-select/",
     "main": [
-        "js/tail.select-full.js",
+        "js/tail.select.js",
         "css/default/tail.select-light.css"
     ],
     "repository": {

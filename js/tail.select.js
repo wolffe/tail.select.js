@@ -3,7 +3,7 @@
  |  @file       ./js/tail.select.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.19
+ |  @version    0.5.20
  |
  |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License
@@ -119,10 +119,11 @@
         this.con = clone(select.defaults, config);
         this.events = {};
         select.inst["tail-" + this.id] = this;
-        return this.init().bind();
+
+        var ret = this.init().bind();
+
+        return ret;
     }, options;
-    select.version = "0.5.15";
-    select.status = "beta";
     select.count = 0;
     select.inst = {};
 
@@ -359,6 +360,7 @@
                 this.open(con.animate);
             }
             (con.cbComplete || function(){ }).call(this, this.select);
+
             return (this._init = false)? this: this;
         },
 
@@ -368,6 +370,19 @@
          */
         bind: function(){
             var self = this;
+
+            /* Seems to be last call from init */
+            if (typeof this.options_initial === 'undefined') {
+                var init_selected = [];
+
+                for (var idx = 0; idx < this.options.selected.length; ++idx) {
+                    init_selected.push(this.options.selected[idx]);
+                }
+
+                this.options_initial = {
+                    selected: init_selected
+                }
+            }
 
             // Keys Listener
             d.addEventListener("keydown", function(event){
@@ -678,6 +693,7 @@
          */
         cbItem: function(item, optgroup, search){
             var li = create("LI", "dropdown-option" + (item.selected? " selected": "") + (item.disabled? " disabled": ""));
+            li.title = item.option.title;
 
             // Inner Text
             if(search && search.length > 0 && this.con.searchMarked){
@@ -738,7 +754,9 @@
             label = '<span class="label-inner">' + label + '</span>',
             limit = (c.multiShowLimit && c.multiLimit < Infinity);
             if(c.multiple && c.multiShowCount){
-                label = '<span class="label-count">:c</span>' + label;
+                var selected_class = (len) ? 'label-count--selected' : '';
+
+                label = '<span class="label-count ' + selected_class + '">:c</span>' + label;
                 label = label.replace(":c", len + (limit? (" / " + c.multiLimit): ""));
             }
             this.label.innerHTML = label;
@@ -950,6 +968,28 @@
          */
         reload: function(){
             return this.remove().init();
+        },
+
+        /*
+         |  PUBLIC :: RELOAD SELECT
+         |  @since  0.5.20 [0.3.0]
+         */
+        reset: function(){
+            /* Set all to unselected */
+            for(var idx = 0; idx < this.options.element.length; ++idx){
+                this.options.element[idx].selected = false;
+                this.options.unselect(this.options.element[idx].value, "#", true);
+            }
+
+            /* Restore initial selection */
+            for(var idx = 0; idx < this.options_initial.selected.length; ++idx){
+                this.options_initial.selected[idx].selected = true;
+                this.options.select(this.options_initial.selected[idx].value, "#", true);
+            }
+
+            /* Reset input field */
+            this.dropdown.querySelector('input').value = '';
+            this.query.call(this, '');
         },
 
         /*
