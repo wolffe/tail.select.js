@@ -1,30 +1,10 @@
-@charset "UTF-8";
-/*
- |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
- |  @file       ./css/default/tail.select-light.css
- |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.15 - Beta
- |
- |  @website    https://github.com/pytesNET/tail.select
- |  @license    X11 / MIT License
- |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
- */
-
-/* @start GENERAL */
-.tail-select, .tail-select *, .tail-select *:before, .tail-select *:after{
+.tail-select,
+.tail-select *,
+.tail-select *:before,
+.tail-select *:after {
     box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
 }
-.tail-select, .tail-select *{
-    outline: none;
-    user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-}
-.tail-select{
+.tail-select {
     width: 250px;
     margin: 1px;
     padding: 0;
@@ -57,9 +37,7 @@
     border-color: transparent;
     border-radius: 3px;
     box-shadow: none;
-    -webkit-box-shadow: none;
     transition: color 142ms linear, border 142ms linear, background 142ms linear;
-    -webkit-transition: color 142ms linear, border 142ms linear, background 142ms linear;
 }
 .tail-select button.tail-all{
     color: rgba(48, 52, 56, 0.5);
@@ -108,7 +86,6 @@
     border-color: transparent;
     border-radius: 0;
     box-shadow: none;
-    -webkit-box-shadow: none;
 }
 .tail-select input[type="text"]:hover{
     color: #303438;
@@ -151,7 +128,6 @@
     border-color: transparent;
     border-radius: 3px;
     transition: background 142ms linear;
-    -webkit-transition: background 142ms linear;
 }
 .tail-select-container .select-handle:hover{
     color: #303438;
@@ -179,9 +155,7 @@
     border-color: #d9d9d9;
     border-radius: 3px;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px rgba(0, 0, 0, 0.25);
     transition: background 142ms linear, box-shadow 142ms linear;
-    -webkit-transition: background 142ms linear, box-shadow 142ms linear;
 }
 .tail-select .select-label:after{
     top: 15px;
@@ -201,7 +175,6 @@
     border-left: 5px solid transparent;
     text-shadow: none;
     transition: opacity 142ms linear, transform 142ms linear;
-    -webkit-transition: opacity 142ms linear, transform 142ms linear;
 }
 .tail-select .select-label .label-count, .tail-select .select-label .label-inner{
     width: auto;
@@ -235,7 +208,6 @@
 .tail-select.active .select-label{
     z-index: 25;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px #3C82E6;
-    -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px #3C82E6;
 }
 .tail-select:hover .select-label:after, .tail-select.idle .select-label:after,
 .tail-select.active .select-label:after{
@@ -252,13 +224,10 @@
 .tail-select.active .select-label:after{
     opacity: 0.85;
     transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
 }
 .tail-select.disabled .select-label{
     cursor: not-allowed;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.35);
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.35);
 }
 /* @end LABEL */
 
@@ -281,7 +250,6 @@
     border-color: #d9d9d9;
     border-radius: 0 0 3px 3px;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 .tail-select .select-dropdown .dropdown-search{
     width: 100%;
@@ -293,7 +261,6 @@
     border-style: solid;
     border-color: #d9d9d9;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 .tail-select .select-dropdown .dropdown-inner{
     width: 100%;
@@ -383,7 +350,6 @@
     background-repeat: no-repeat;
     background-position: center center;
     transition: opacity 50ms linear;
-    -webkit-transition: opacity 50ms linear;
 }
 .tail-select .select-dropdown ul li.dropdown-option .option-description{
     color: rgba(48, 52, 56, 0.85);
@@ -482,5 +448,3 @@
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2214%22%20height%3D%2216%22%20viewBox%3D%220%200%2014%2016%22%3E%3Cpath%20fill%3D%22%23303438%22%20d%3D%22M13%201H1c-.55%200-1%20.45-1%201v12c0%20.55.45%201%201%201h12c.55%200%201-.45%201-1V2c0-.55-.45-1-1-1zm0%2013H1V2h12v12zm-8.5-2H3v-1.5L9.5%204H11v1.5L4.5%2012z%22/%3E%3C/svg%3E");
 }
 /* @end DROPDOWN */
-
-/*# sourceMappingURL=tail.select-light.map */

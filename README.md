@@ -29,7 +29,7 @@ Support
 
 Features
 --------
--   **Beautiful**. 5 different Designs in many color schemes...
+-   **Beautiful**. 2 different designs...
 -   **Extensive**.
     -   Search bar to find options quickly...
     -   All / None optgroup selection buttons...
@@ -68,11 +68,11 @@ https://www.npmjs.com/package/tail.select.js
 ```
 
 ```markup
-https://cdn.jsdelivr.net/npm/tail.select.js@0.5.19/js/tail.select-full.min.js
+https://cdn.jsdelivr.net/npm/tail.select.js@0.5.21/js/tail.select-full.min.js
 ```
 
 ```markup
-https://unpkg.com/browse/tail.select.js@0.5.19/
+https://unpkg.com/browse/tail.select.js@0.5.21/
 ```
 
 Thanks To

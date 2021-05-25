@@ -3,54 +3,64 @@
  |  @file       ./js/tail.select.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.20
+ |  @version    0.5.21
  |
  |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2020 - 2021 wolffe <getbutterfly@gmail.com>
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
-;(function(root, factory){
-    if(typeof define === "function" && define.amd){
-        define(function(){ return factory(root); });
-    } else if(typeof module === "object" && module.exports){
+;(function(root, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(function () {
+            return factory(root);
+        });
+    } else if (typeof module === "object" && module.exports) {
         module.exports = factory(root);
     } else {
-        if(typeof root.tail === "undefined"){
+        if (typeof root.tail === "undefined") {
             root.tail = {};
         }
         root.tail.select = factory(root);
 
         // jQuery Support
-        if(typeof jQuery !== "undefined"){
-            jQuery.fn.tailselect = function(o){
+        if (typeof jQuery !== "undefined") {
+            jQuery.fn.tailselect = function (o) {
                 var r = [], i;
-                this.each(function(){ if((i = tail.select(this, o)) !== false){ r.push(i); } });
-                return (r.length === 1)? r[0]: (r.length === 0)? false: r;
+                this.each(function () {
+                    if ((i = tail.select(this, o)) !== false) {
+                        r.push(i);
+                    }
+                });
+                return (r.length === 1) ? r[0] : (r.length === 0) ? false : r;
             };
         }
 
         // MooTools Support
-        if(typeof(MooTools) != "undefined"){
-            Element.implement({ tailselect: function(o){ return new tail.select(this, o); } });
+        if (typeof(MooTools) != "undefined") {
+            Element.implement({
+                tailselect: function (o) {
+                    return new tail.select(this, o);
+                }
+            });
         }
     }
-}(window, function(root){
+}(window, function (root) {
     "use strict";
     var w = root, d = root.document;
 
     // Internal Helper Methods
-    function cHAS(el, name){
-        return (el && "classList" in el)? el.classList.contains(name): false;
+    function cHAS(el, name) {
+        return (el && "classList" in el) ? el.classList.contains(name) : false;
     }
-    function cADD(el, name){
-        return (el && "classList" in el)? el.classList.add(name): undefined;
+    function cADD(el, name) {
+        return (el && "classList" in el) ? el.classList.add(name) : undefined;
     }
-    function cREM(el, name){
-        return (el && "classList" in el)? el.classList.remove(name): undefined;
+    function cREM(el, name) {
+        return (el && "classList" in el) ? el.classList.remove(name) : undefined;
     }
-    function trigger(el, event, opt){
-        if(CustomEvent && CustomEvent.name){
+    function trigger(el, event, opt) {
+        if (CustomEvent && CustomEvent.name) {
             var ev = new CustomEvent(event, opt);
         } else {
             var ev = d.createEvent("CustomEvent");
@@ -58,19 +68,19 @@
         }
         return el.dispatchEvent(ev);
     }
-    function clone(obj, rep){
-        if(typeof Object.assign === "function"){
+    function clone(obj, rep) {
+        if (typeof Object.assign === "function") {
             return Object.assign({}, obj, rep || {});
         }
         var clone = Object.constructor();
-        for(var key in obj){
-            clone[key] = (key in rep)? rep[key]: obj[key];
+        for (var key in obj) {
+            clone[key] = (key in rep) ? rep[key] : obj[key];
         }
         return clone;
     }
-    function create(tag, classes){
+    function create(tag, classes) {
         var r = d.createElement(tag);
-            r.className = (classes && classes.join)? classes.join(" "): classes || "";
+            r.className = (classes && classes.join) ? classes.join(" ") : classes || "";
         return r;
     }
 
@@ -78,25 +88,25 @@
      |  SELECT CONSTRUCTOR
      |  @since  0.5.12 [0.3.0]
      */
-    var select = function(el, config){
-        el = (typeof(el) == "string")? d.querySelectorAll(el): el;
-        if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
-            for(var _r = [], l = el.length, i = 0; i < l; i++){
+    var select = function(el, config) {
+        el = (typeof(el) == "string") ? d.querySelectorAll(el) : el;
+        if (el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array) {
+            for (var _r = [], l = el.length, i = 0; i < l; i++) {
                 _r.push(new select(el[i], clone(config, {})));
             }
-            return (_r.length === 1)? _r[0]: ((_r.length === 0)? false: _r);
+            return (_r.length === 1) ? _r[0] : ((_r.length === 0) ? false : _r);
         }
-        if(!(el instanceof Element) || !(this instanceof select)){
-            return !(el instanceof Element)? false: new select(el, config);
+        if (!(el instanceof Element) || !(this instanceof select)) {
+            return !(el instanceof Element) ? false : new select(el, config);
         }
 
         // Check Element
-        if(select.inst[el.getAttribute("data-tail-select")]){
+        if (select.inst[el.getAttribute("data-tail-select")]) {
             return select.inst[el.getAttribute("data-tail-select")];
         }
-        if(el.getAttribute("data-select")){
+        if (el.getAttribute("data-select")) {
             var test = JSON.parse(el.getAttribute("data-select").replace(/\'/g, '"'));
-            if(test instanceof Object){
+            if (test instanceof Object) {
                 config = clone(config, test); // This is a unofficial function ;3
             }
         }
@@ -104,14 +114,14 @@
         // Get Element Options
         var placeholder = el.getAttribute("placeholder") || el.getAttribute("data-placeholder"),
             fb1 = "bindSourceSelect", fb2 = "sourceHide"; // Fallbacks
-        config = (typeof(config) == "object")? config: {};
-        config.multiple = ("multiple" in config)? config.multiple: el.multiple;
-        config.disabled = ("disabled" in config)? config.disabled: el.disabled;
+        config = (typeof(config) == "object") ? config : {};
+        config.multiple = ("multiple" in config) ? config.multiple : el.multiple;
+        config.disabled = ("disabled" in config) ? config.disabled : el.disabled;
         config.placeholder = placeholder || config.placeholder || null;
-        config.width = (config.width === "auto")? el.offsetWidth + 50: config.width;
-        config.sourceBind = (fb1 in config)? config[fb1]: config.sourceBind || false;
-        config.sourceHide = (fb2 in config)? config[fb2]: config.sourceHide || true;
-        config.multiLimit = (config.multiLimit >= 0)? config.multiLimit: Infinity;
+        config.width = (config.width === "auto") ? el.offsetWidth + 50 : config.width;
+        config.sourceBind = (fb1 in config) ? config[fb1] : config.sourceBind || false;
+        config.sourceHide = (fb2 in config) ? config[fb2] : config.sourceHide || true;
+        config.multiLimit = (config.multiLimit >= 0) ? config.multiLimit : Infinity;
 
         // Init Instance
         this.e = el;
@@ -196,21 +206,21 @@
             search: "Type in to search...",
             disabled: "This Field is disabled"
         },
-        modify: function(locale, id, string){
-            if(!(locale in this)){
+        modify: function(locale, id, string) {
+            if (!(locale in this)) {
                 return false;
             }
-            if((id instanceof Object)){
-                for(var key in id){
+            if ((id instanceof Object)) {
+                for (var key in id) {
                     this.modify(locale, key, id[key]);
                 }
             } else {
-                this[locale][id] = (typeof(string) == "string")? string: this[locale][id];
+                this[locale][id] = (typeof(string) == "string") ? string : this[locale][id];
             }
             return true;
         },
-        register: function(locale, object){
-            if(typeof(locale) != "string" || !(object instanceof Object)){
+        register: function(locale, object) {
+            if (typeof(locale) != "string" || !(object instanceof Object)) {
                 return false;
             }
             this[locale] = object;
@@ -226,17 +236,17 @@
          |  INERNAL :: TRANSLATE
          |  @since  0.5.8 [0.5.8]
          */
-        _e: function(string, replace, def){
-            if(!(string in this.__)){
+        _e: function(string, replace, def) {
+            if (!(string in this.__)) {
                 return (!def)? string: def;
             }
 
             var string = this.__[string];
-            if(typeof(string) === "function"){
+            if (typeof(string) === "function") {
                 string = string.call(this, replace);
             }
-            if(typeof(replace) === "object"){
-                for(var key in replace){
+            if (typeof(replace) === "object") {
+                for (var key in replace) {
                     string = string.replace(key, replace[key]);
                 }
             }
@@ -247,13 +257,13 @@
          |  INTERNAL :: INIT SELECT FIELD
          |  @since  0.5.13 [0.3.0]
          */
-        init: function(){
+        init: function() {
             var self = this, classes = ["tail-select"], con = this.con,
                 regexp = /^[0-9.]+(?:cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|\%)$/i;
 
             // Init ClassNames
-            var c = (con.classNames === true)? this.e.className: con.classNames;
-            classes.push((c && c.push)? c.join(" "): (c && c.split)? c: "no-classes");
+            var c = (con.classNames === true) ? this.e.className : con.classNames;
+            classes.push((c && c.push) ? c.join(" ") : (c && c.split) ? c : "no-classes");
             if(con.hideSelected){    classes.push("hide-selected"); }
             if(con.hideDisabled){    classes.push("hide-disabled"); }
             if(con.multiLimit == 0){ classes.push("disabled");      }

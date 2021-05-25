@@ -1,6 +1,14 @@
 CHANGELOG
 ===========
 
+Version 0.5.21
+--------------
+- Remove CSS mappings
+- Remove Bootstrap themes
+- Fix Safari issue with unselectable input field
+- Started cleaning up the code and assessing ES6 migration
+- Started implementing CSS variables
+
 Version 0.5.20
 --------------
 - Add `.label-count--selected` class to count when count is higher than 0.
