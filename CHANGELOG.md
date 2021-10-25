@@ -1,13 +1,19 @@
 CHANGELOG
 ===========
 
+Version 0.5.22
+--------------
+- Add option deselect using the ENTER key
+- Add Romanian (RO) translation
+- Add Greek (GR) translation
+
 Version 0.5.21
 --------------
 - Remove CSS mappings
 - Remove Bootstrap themes
 - Fix Safari issue with unselectable input field
-- Started cleaning up the code and assessing ES6 migration
-- Started implementing CSS variables
+- Start cleaning up the code and assessing ES6 migration
+- Start implementing CSS variables
 
 Version 0.5.20
 --------------

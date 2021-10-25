@@ -298,6 +298,28 @@
             search: "Aramak için yazın...",
             disabled: "Bu Alan kullanılamaz"
         },
+        ro: {
+            all: "Toate",
+            none: "Nimic",
+            empty: "Nu există opțiuni disponibile",
+            emptySearch: "Nu s-au găsit opțiuni",
+            limit: "Nu puteți selecta mai multe opțiuni",
+            placeholder: "Selecteaza o opțiune",
+            placeholderMulti: "Selectați până la :limit opțiuni...",
+            search: "Tastați pentru a căuta...",
+            disabled: "Acest câmp este dezactivat"
+        },
+        gr: {
+            all: "Όλα",
+            none: "Κανένα",
+            empty: "Δεν υπάρχουν διαθέσιμες επιλογές",
+            emptySearch: "Δεν βρέθηκαν επιλογές",
+            limit: "Δεν μπορείτε να επιλέξετε περισσότερες επιλογές",
+            placeholder: "Επιλέξτε μία επιλογή...",
+            placeholderMulti: "Επιλέξτε μέχρι :limit επιλογές...",
+            search: "Πληκτρολογήστε για αναζήτηση...",
+            disabled: "Αυτό το πεδίο είναι απενεργοποιημένο"
+        },
         modify: function(locale, id, string){
             if(!(locale in this)){
                 return false;

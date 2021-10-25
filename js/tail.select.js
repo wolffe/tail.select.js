@@ -3,7 +3,7 @@
  |  @file       ./js/tail.select.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.21
+ |  @version    0.5.22
  |
  |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License
@@ -233,7 +233,7 @@
      */
     select.prototype = {
         /*
-         |  INERNAL :: TRANSLATE
+         |  INTERNAL :: TRANSLATE
          |  @since  0.5.8 [0.5.8]
          */
         _e: function(string, replace, def) {
@@ -412,7 +412,11 @@
                 // Enter || Escape
                 if(key == 13){
                     if((opt = self.dropdown.querySelector(".dropdown-option.hover:not(.disabled)"))){
-                        self.options.select.call(self.options, opt);
+                        if (opt.classList.contains("selected")) {
+                            self.options.unselect.call(self.options, opt);
+                        } else {
+                            self.options.select.call(self.options, opt);
+                        }
                     }
                 }
                 if(key == 27 || key == 13){

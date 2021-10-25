@@ -2,10 +2,11 @@
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.15 - Beta
+ |  @version    0.5.16
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
+ |  @copyright  Copyright © 2020 - 2021 wolffe <getbutterfly@gmail.com>
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
 ;(function(factory){
@@ -166,5 +167,38 @@
         search: "Aramak için yazın...",
         disabled: "Bu Alan kullanılamaz"
     });
+
+    /*
+     |  Translator:     Sergiu Bugeac - (https://github.com/5ergiu)
+     |  GitHub:         https://github.com/wolffe/tail.select.js/issues/10
+     */
+    select.strings.register("ro", {
+        all: "Toate",
+        none: "Nimic",
+        empty: "Nu există opțiuni disponibile",
+        emptySearch: "Nu s-au găsit opțiuni",
+        limit: "Nu puteți selecta mai multe opțiuni",
+        placeholder: "Selecteaza o opțiune",
+        placeholderMulti: "Selectați până la :limit opțiuni...",
+        search: "Tastați pentru a căuta...",
+        disabled: "Acest câmp este dezactivat"
+    });
+
+    /*
+     |  Translator:     achatzi78 - (https://github.com/achatzi78)
+     |  GitHub:         https://github.com/wolffe/tail.select.js/issues/8
+     */
+    select.strings.register("gr", {
+        all: "Όλα",
+        none: "Κανένα",
+        empty: "Δεν υπάρχουν διαθέσιμες επιλογές",
+        emptySearch: "Δεν βρέθηκαν επιλογές",
+        limit: "Δεν μπορείτε να επιλέξετε περισσότερες επιλογές",
+        placeholder: "Επιλέξτε μία επιλογή...",
+        placeholderMulti: "Επιλέξτε μέχρι :limit επιλογές...",
+        search: "Πληκτρολογήστε για αναζήτηση...",
+        disabled: "Αυτό το πεδίο είναι απενεργοποιημένο"
+    });
+
     return select;
 }));
