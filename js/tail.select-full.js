@@ -604,9 +604,11 @@
          |  @since  0.5.14 [0.3.0]
          */
         callback: function(item, state, _force){
-            var rkey = item.key.replace(/('|\\)/g, "\\$1"),
-                rgrp = item.group.replace(/('|\\)/g, "\\$1"),
-                rsel = "[data-key='" + rkey + "'][data-group='" + rgrp + "']";
+            if(item !== undefined && item.key !== null) {
+             var rkey = item.key.replace(/('|\\)/g, "\\$1"),
+                 rgrp = item.group.replace(/('|\\)/g, "\\$1"),
+                 rsel = "[data-key='" + rkey + "'][data-group='" + rgrp + "']";
+            }
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
