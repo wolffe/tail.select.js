@@ -1205,6 +1205,18 @@
         },
 
         /*
+         |  GET ALL EXISTING OPTIONS
+         */
+        getAll: function () {
+            let options = [];
+            for (const group of Object.values(this.items)) {
+                options.push(...Object.values(group));
+            }
+
+            return options;
+        },
+
+        /*
          |  SET AN EXISTING OPTION
          |  @since  0.5.15 [0.3.0]
          */
@@ -1348,6 +1360,27 @@
                 delete this.groups[item.group];
             }
             return (rebuild)? this.self.query(): true;
+        },
+
+        /*
+         |  REMOVE ALL EXISTING OPTIONS AND GROUPS
+         */
+        removeAll: function () {
+            for (const group of Object.values(this.items)) {
+                for (const item of Object.values(group)) {
+                    if (item.selected) {
+                        this.unselect(item);
+                    }
+                    if (item.disabled) {
+                        this.enable(item);
+                    }
+                    item.option.parentElement.removeChild(item.option);
+                }
+            }
+            this.items = {'#': {}};
+            this.groups = {};
+
+            this.self.query();
         },
 
         /*
