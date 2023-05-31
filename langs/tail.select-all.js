@@ -200,5 +200,21 @@
         disabled: "Αυτό το πεδίο είναι απενεργοποιημένο"
     });
 
+    /*
+     |  Translator:     imun - (https://github.com/imaun)
+     |  GitHub:         https://github.com/wolffe/tail.select.js/issues/27
+     */
+     select.strings.register("fa", {
+        all: "همه",
+        none: "هیچکدام",
+        empty: "گزینه ای موجود نیست",
+        emptySearch: "حذف انتخاب",
+        limit: "نمی توانید گزینه های بیشتری انتخاب کنید",
+        placeholder: "انتخاب کنید...",
+        placeholderMulti: "انتخاب محدود به :limit گزینه...",
+        search: "جستجوی ...",
+        disabled: "این فیلد غیدفعال است"
+    });
+
     return select;
 }));
