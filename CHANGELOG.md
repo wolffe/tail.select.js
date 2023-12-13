@@ -1,6 +1,11 @@
 CHANGELOG
 ===========
 
+Version 0.5.23
+--------------
+- Fix "Undefined 'key'" error
+- Add getAll and removeAll methods to options object
+
 Version 0.5.22
 --------------
 - Add option deselect using the ENTER key

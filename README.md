@@ -204,5 +204,5 @@ tail.select("select", {
 
 Copyright & License
 -------------------
-Published under the MIT-License; Copyright &copy; 2020 - 2021 wolffe
+Published under the MIT-License; Copyright &copy; 2020 - 2023 wolffe
 Published under the MIT-License; Copyright &copy; 2014 - 2019 SamBrishes, pytesNET

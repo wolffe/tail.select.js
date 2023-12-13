@@ -3,11 +3,11 @@
  |  @file       ./js/tail.select.js
  |  @author     wolffe <getbutterfly@gmail.com>
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.22
+ |  @version    0.5.23
  |
  |  @website    https://github.com/wolffe/tail.select.js
  |  @license    X11 / MIT License
- |  @copyright  Copyright © 2020 - 2021 wolffe <getbutterfly@gmail.com>
+ |  @copyright  Copyright © 2020 - 2023 wolffe <getbutterfly@gmail.com>
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
 ;(function(root, factory) {
