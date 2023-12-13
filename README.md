@@ -1,4 +1,4 @@
-tail.select.js - Beautify Select Fields (formerly tail.select)
+tail.select.js - Beautify Select Fields
 ====================================
 
 ![npm](https://img.shields.io/npm/v/tail.select.js?style=flat-square)
@@ -7,11 +7,11 @@ tail.select.js - Beautify Select Fields (formerly tail.select)
 
 **Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
-The **tail.select** script is back as **tail.select.js**, rewritten in vanilla JavaScript and ready to beautify and extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as select all or none buttons), deselectability on single select fields, a perfect design and many more user-friendly functions to your web application.
+The **tail.select** script is back, rewritten in vanilla JavaScript and ready to beautify and extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as select all or none buttons), a perfect design and many more user-friendly functions to your web application.
 
-# This library has been taken over. It's a great library which deserves to live on. Contributors, patches and PRs wanted!
+**NOTE #1**: Version `0.5.23` is the last one in the `0.5.x` branch. The next version will be `1.0.0` and contains breaking changes. If you have an older implementation, and you use custom code, please stick to the `0.5.x` branch. This branch is no longer maintained, but it's stable.
 
-# [The new homepage is here!](https://getbutterfly.com/tail-select/)
+**NOTE #2**: If you want to use the latest version and your implementation is simple, or if you are starting a new project from scratch, then you can use the `1.0.0+` branch. This branch is actively maintained.
 
 ----------------------------
 
@@ -27,21 +27,17 @@ Support
 
 Features
 --------
--   **Beautiful**. 2 different designs...
+-   **Beautiful**. 2 different designs (light and dark)
 -   **Extensive**.
     -   Search bar to find options quickly...
     -   All / None optgroup selection buttons...
-    -   Add, Edit, Delete and Modifiy options at any time...
-    -   De-selection on single select fields...
-    -   ... and way more ...
--   **Configurable**. 36 settings and 3 bindable events...
--   **Translatable**. Already available in 10+ languages...
--   **Zero Dependencies**. And written in vanilla JavaScript...
--   **Free/To/Use**. Because it's MIT licensed <3
+-   **Translatable**.
+-   **Zero dependencies**. And written in vanilla JavaScript...
+-   **Free to use**. Because it's MIT licensed <3
 
 Install & Embed
 ---------------
-The master branch will always contain the latest Release, which you can download directly here
+The master branch will always contain the latest release, which you can download directly here
 as [.tar](https://github.com/wolffe/tail.select.js/tarball/master) or as [.zip](https://github.com/wolffe/tail.select.js/zipball/master)
 archive, or just visit the [Releases](https://github.com/wolffe/tail.select.js/releases) Page
 on GitHub directly. You can also be cool and using npm, Yarn or bower:
@@ -73,11 +69,11 @@ https://cdn.jsdelivr.net/npm/tail.select.js@0.5.22/js/tail.select.min.js
 https://unpkg.com/browse/tail.select.js@0.5.22/
 ```
 
-Thanks To
----------
+### Thanks To (`0.5.x` Branch)
+-   SamBrishes, pytesNET (Copyright &copy; 2014-2019) 
 -   [Octicons](https://octicons.github.com/) for the cute Icons
 
-### Translations
+### Translations (`0.5.x` Branch)
 -   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/wolffe/tail.select.js/issues/11)
 -   [Igor](https://github.com/igorcm) / [Brazilian Portuguese Translation](https://github.com/wolffe/tail.select.js/pull/34)
 -   [Noxludio](https://github.com/noxludio) / [Finnish Translation](https://github.com/wolffe/tail.select.js/pull/35)
@@ -89,9 +85,9 @@ Thanks To
 -   [5ergiu](https://github.com/5ergiu) / [Romanian Translation](https://github.com/wolffe/tail.select.js/issues/10)
 -   [achatzi78](https://github.com/achatzi78) / [Greek Translation](https://github.com/wolffe/tail.select.js/issues/8)
 
-Documentation
+Documentation (`0.5.x` Branch)
 -------------
-The Documentation has been moved to [GitHubs Wiki Pages](https://github.com/wolffe/tail.select.js/wiki),
+The documentation has been moved to [GitHubs Wiki Pages](https://github.com/wolffe/tail.select.js/wiki),
 but I will keep a table of contents list here and some basic instructions.
 
 -   [Install & Embed](https://www.github.com/wolffe/tail.select.js/wiki/instructions)
@@ -102,7 +98,7 @@ but I will keep a table of contents list here and some basic instructions.
 -   [Internal Variables & Methods](https://www.github.com/wolffe/tail.select.js/wiki/internal)
 -   [HowTos, Tips & Tricks](https://www.github.com/wolffe/tail.select.js/wiki/How-Tos)
 
-### Files
+### Files (`0.5.x` Branch)
 The `tail.select` package contains different JavaScript files:
 
 -   `js/tail.select(.min).js` The main JavaScript with `en` tranlation strings only.
@@ -110,7 +106,7 @@ The `tail.select` package contains different JavaScript files:
 -   `langs/tail.select-all(.min).js` Just ALL translation strings itself.
 -   `langs/tail.select-{locale}.js` Just the {locale} translation strings.
 
-### Basic Instructions
+### Basic Instructions (`0.5.x` Branch)
 You can pass up to 2 arguments to the **tail.select** constructor, the first parameter is required
 and need to be an `Element`, a `NodeList`, a `HTMLCollection`, an Array with `Element` objects or
 just a single selector as `string`, which calls the `querySelectorAll()` method on its own. The
@@ -145,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </html>
 ```
 
-### Default options
+### Default options (`0.5.x` Branch)
 Please check out [GitHubs Wiki Pages](https://github.com/wolffe/tail.select.js/wiki) to read more
 about each single option!
 
@@ -201,8 +197,3 @@ tail.select("select", {
     cbLoopGroup: undefined      // [0.4.0]      Function
 });
 ```
-
-Copyright & License
--------------------
-Published under the MIT-License; Copyright &copy; 2020 - 2023 wolffe
-Published under the MIT-License; Copyright &copy; 2014 - 2019 SamBrishes, pytesNET
