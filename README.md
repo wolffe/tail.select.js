@@ -62,11 +62,11 @@ https://www.npmjs.com/package/tail.select.js
 ```
 
 ```markup
-https://cdn.jsdelivr.net/npm/tail.select.js@0.5.22/js/tail.select.min.js
+https://cdn.jsdelivr.net/npm/tail.select.js@0.5.23/js/tail.select.min.js
 ```
 
 ```markup
-https://unpkg.com/browse/tail.select.js@0.5.22/
+https://unpkg.com/browse/tail.select.js@0.5.23/
 ```
 
 ### Thanks To (`0.5.x` Branch)
