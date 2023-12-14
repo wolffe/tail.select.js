@@ -9,9 +9,9 @@ tail.select.js - Beautify Select Fields
 
 The **tail.select** script is back, rewritten in vanilla JavaScript and ready to beautify and extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as select all or none buttons), a perfect design and many more user-friendly functions to your web application.
 
-**NOTE #1**: Version `0.5.23` is the last one in the `0.5.x` branch. The next version will be `1.0.0` and contains breaking changes. If you have an older implementation, and you use custom code, please stick to the `0.5.x` branch. This branch is no longer maintained, but it's stable.
+**NOTE #1**: If you want to use the latest version and your implementation is simple, or if you are starting a new project from scratch, then you can use the `1.x` branch. This branch is actively maintained.
 
-**NOTE #2**: If you want to use the latest version and your implementation is simple, or if you are starting a new project from scratch, then you can use the `1.0.0+` branch. This branch is actively maintained.
+**NOTE #2**: Version `0.5.23` is the last one in the `0.5.x` branch. The next version is `1.x` and contains breaking changes. If you have an older implementation, and you use custom code, please stick to the `0.5.x` branch. This branch is no longer maintained, but it's stable.
 
 ----------------------------
 
@@ -62,11 +62,11 @@ https://www.npmjs.com/package/tail.select.js
 ```
 
 ```markup
-https://cdn.jsdelivr.net/npm/tail.select.js@0.5.23/js/tail.select.min.js
+https://cdn.jsdelivr.net/npm/tail.select.js@1.0.0/js/tail.select.min.js
 ```
 
 ```markup
-https://unpkg.com/browse/tail.select.js@0.5.23/
+https://unpkg.com/browse/tail.select.js@1.0.0/
 ```
 
 ### Thanks To (`0.5.x` Branch)

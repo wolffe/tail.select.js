@@ -1,0 +1,250 @@
+:root {
+    --option-size: 14px;
+
+    --tail-select--text: #000000;
+    --tail-select--meta: #d1d5db;
+    --tail-select--muted: #b3b3b3;
+    --tail-select--background: #ffffff;
+
+    --tail-select--accent: #3742fa;
+
+    --tail-select--selection: rgba(0, 0, 0, 0.05);
+    --tail-select--selection-text: #ffffff;
+    --tail-select--selection-muted: rgb(147 197 253 / 1);
+}
+
+[data-theme="tail-theme--light"] {
+    color-scheme: light;
+}
+
+[data-theme="tail-theme--dark"] {
+    color-scheme: dark;
+
+    --tail-select--text: #ffffff;
+    --tail-select--meta: #30343b;
+    --tail-select--muted: #4d4d4d;
+    --tail-select--background: #191b1f;
+
+    --tail-select--accent: #3742fa;
+
+    --tail-select--selection: rgba(0, 0, 0, 0.15);
+    --tail-select--selection-text: #ffffff;
+    --tail-select--selection-muted: #353b48;
+}
+
+.tail-select * {
+    box-sizing: border-box;
+}
+
+.tail-select,
+.tail-select.tail--single,
+.tail-select.tail--multiple {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+
+    height: fit-content;
+    font-size: 14px;
+    line-height: normal;
+    font-family: inherit;
+
+    cursor: default;
+    color: var(--tail-select--text);
+    padding: 6px 6px 6px 6px;
+    text-align: left;
+    background-color: var(--tail-select--background);
+    border: 1px solid var(--tail-select--meta);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.05);
+
+    transition: border 0.4s ease-out;
+}
+.tail-select:hover {
+    border-color: var(--tail-select--accent);
+}
+
+.tail-select .tail--search,
+.tail-select input[type="text"].tail--search {
+    font-family: inherit;
+    color: var(--tail-select--text);
+    border: 0 none;
+    border-radius: initial;
+    border-width: 0;
+    border-color: transparent;
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    outline: 0;
+    font-size: 13px;
+    margin: 0;
+    padding: 2px 72px 2px 2px;
+    cursor: text;
+}
+.tail-select .tail--search:hover,
+.tail-select input[type="text"].tail--search:hover {
+    border: 0 none;
+}
+
+.tail-select.tail--single .tail--search,
+.tail-select.tail--single input[type="text"].tail--search {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23808080' d='M5.7 9.71a1 1 0 0 0 0 1.41l4.9 4.9a2 2 0 0 0 2.83 0l4.89-4.9a1 1 0 1 0-1.42-1.41l-4.18 4.18a1 1 0 0 1-1.42 0L7.12 9.71a1 1 0 0 0-1.41 0Z'/%3E%3C/svg%3E");
+    background-position: 100%, 100% 0;
+    background-size: 1.5em 1.5em;
+    background-repeat: no-repeat;
+}
+.tail-select.tail--single .tail--search:focus,
+.tail-select.tail--single input[type="text"].tail--search:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23808080' d='M18.3 15.29a1 1 0 0 0 0-1.41l-4.9-4.9a2 2 0 0 0-2.83 0l-4.89 4.9a1 1 0 1 0 1.42 1.41l4.18-4.18a1 1 0 0 1 1.42 0l4.18 4.18a1 1 0 0 0 1.41 0Z'/%3E%3C/svg%3E");
+}
+.tail-select.tail--multiple .tail--search,
+.tail-select.tail--multiple input[type="text"].tail--search {
+    width: calc(100% - 32px);
+}
+
+.tail-select .tail--toolbar {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+}
+
+.tail-select .tail--counter {
+    font-size: 12px;
+    text-align: center;
+    color: var(--tail-select--text);
+    font-weight: 700;
+    width: 24px;
+    display: inline-block;
+    border-right: 1px solid var(--tail-select--muted);
+    padding: 0 0px 0 0;
+    margin: 0 8px 0 0;
+}
+
+.tail-select label.all,
+.tail-select button.uncheck {
+    width: auto;
+    height: auto;
+    margin: 0 2px;
+    padding: 2px 6px;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 10px;
+    line-height: 14px;
+    text-shadow: none;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: top;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 3px;
+    box-shadow: none;
+
+    color: var(--tail-select--text);
+    border-color: var(--tail-select--meta);
+    background-color: transparent;
+}
+.tail-select label.all input[type="checkbox"] {
+    display: none;
+}
+.tail-select label.all:hover,
+.tail-select button.uncheck:hover {
+    color: var(--tail-select--text);
+    border-color: var(--tail-select--text);
+}
+
+
+.tail-select > .tail--nested-dropdown {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    background-color: var(--tail-select--background);
+    border: 1px solid var(--tail-select--meta);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.05);
+
+    padding: 8px 0;
+    margin: 6px 0 0 0;
+    max-height: 200px;
+    overflow: auto;
+    width: 100%;
+}
+
+.tail-select .tail--optgroup {
+    padding: 0;
+    cursor: default;
+}
+.tail-select .tail--nested-dropdown-list {
+    padding: 0;
+}
+.tail-select .tail--nested-dropdown label {
+    display: flex;
+    padding: 6px 12px;
+    align-items: start;
+}
+.tail-select .tail--nested-dropdown label input[type="checkbox"] {
+    display: block;
+}
+
+.tail-select .tail--nested-dropdown-item {
+    color: var(--tail-select--text);
+    list-style: none;
+    padding: 0;
+    display: block;
+    cursor: default;
+}
+.tail-select .tail--nested-dropdown-item span {
+    font-size: 14px;
+    line-height: 1.5;
+}
+.tail-select .tail--nested-dropdown-item span small {
+    display: block;
+    font-size: 12px;
+}
+
+.tail-select .tail--nested-dropdown-item:hover {
+    background-color: var(--tail-select--selection);
+}
+
+
+.tail--optgroup-label {
+    font-weight: 700;
+}
+
+.tail-select input[type="checkbox"] {
+    height: var(--option-size);
+    width: var(--option-size);
+    padding: 0;
+    margin: 4px 0.5rem 0 0;
+
+    accent-color: #3742fa;
+}
+
+.tail-select input[type="checkbox"]:focus {
+    outline: 3px solid rgb(0 87 255 / 50%);
+    outline: 3px solid rgb(147 197 253 / 1);
+    outline-offset: 0px;
+}
+
+.tail-select.tail--single .tail--counter,
+.tail--single .tail--optgroup > label > input[type="checkbox"],
+.tail--single .tail--toolbar {
+    display: none;
+}
+
+.tail--selected-options-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2px;
+}
+.tail--selected-options-list li {
+    list-style: none;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1;
+    margin: 0;
+    border-radius: 48px;
+    background-color: var(--tail-select--accent);
+    color: var(--tail-select--selection-text);
+}

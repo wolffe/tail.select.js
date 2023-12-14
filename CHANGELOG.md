@@ -1,6 +1,10 @@
 CHANGELOG
 ===========
 
+Version 1.0.0
+--------------
+- New, refactored release
+
 Version 0.5.23
 --------------
 - Fix "Undefined 'key'" error
