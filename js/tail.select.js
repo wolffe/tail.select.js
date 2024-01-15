@@ -2,7 +2,7 @@
  *  tail.select - The vanilla JavaScript solution to make your <select> fields awesome!
  *
  *  @author     Ciprian Popescu <getbutterfly@gmail.com>
- *  @version    1.0.0
+ *  @version    1.0.2
  *  @url        https://getbutterfly.com/tail-select/
  *  @github     https://github.com/wolffe/tail.select.js
  *  @license    MIT License
@@ -54,16 +54,16 @@ const tail = {
             const searchInput = document.createElement("input");
             searchInput.type = "text";
             searchInput.classList.add('tail--search');
-            searchInput.placeholder = strings.placeholder;
+            searchInput.placeholder = strings.placeholder || "Select an option...";
 
             // Add focus event to change the placeholder
             searchInput.addEventListener("focus", () => {
-                searchInput.placeholder = strings.search;
+                searchInput.placeholder = strings.search || "Type in to search...";
             });
 
             // Add blur event to revert the placeholder when not focused
             searchInput.addEventListener("blur", () => {
-                searchInput.placeholder = strings.placeholder;
+                searchInput.placeholder = strings.placeholder || "Select an option...";
             });
 
             // Add input event to change the placeholder
@@ -78,20 +78,20 @@ const tail = {
             // Create toggle-all checkbox
             const toggleAllCheckbox = document.createElement("input");
             toggleAllCheckbox.type = "checkbox";
-            toggleAllCheckbox.value = strings.all;
+            toggleAllCheckbox.value = strings.all || "All";
             toggleAllCheckbox.addEventListener("change", () =>
                 toggleAll(originalSelect, toggleAllCheckbox)
             );
 
             const toggleAllLabel = document.createElement("label");
-            toggleAllLabel.textContent = strings.all;
+            toggleAllLabel.textContent = strings.all || "All";
             toggleAllLabel.classList.add("all");
             toggleAllLabel.appendChild(toggleAllCheckbox);
 
             // Create uncheck-all button
             const uncheckAllButton = document.createElement("button");
             uncheckAllButton.type = 'button';
-            uncheckAllButton.textContent = strings.none;
+            uncheckAllButton.textContent = strings.none || "None";
             uncheckAllButton.classList.add("uncheck");
             uncheckAllButton.addEventListener("click", () =>
                 uncheckAll(originalSelect)

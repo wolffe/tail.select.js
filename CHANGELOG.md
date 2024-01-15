@@ -1,6 +1,11 @@
 CHANGELOG
 ===========
 
+Version 1.0.2
+--------------
+- Add fallback for translatable strings
+- Change alignment to Flexbox to fix vertical alignment gaps
+
 Version 1.0.0
 --------------
 - New, refactored release

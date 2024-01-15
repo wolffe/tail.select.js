@@ -1,6 +1,6 @@
 {
     "name": "tail.select.js",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Create beautiful, functional and extensive (multi) select fields, written in Vanilla JavaScript without any dependencies!",
     "keywords": [
         "select",
