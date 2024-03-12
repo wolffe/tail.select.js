@@ -33,6 +33,7 @@ Features
     -   All / None optgroup selection buttons...
 -   **Translatable**.
 -   **Zero dependencies**. And written in vanilla JavaScript...
+-   **Ajax request**
 -   **Free to use**. Because it's MIT licensed <3
 
 Install & Embed
@@ -196,4 +197,40 @@ tail.select("select", {
     cbLoopItem: undefined,      // [0.4.0]      Function
     cbLoopGroup: undefined      // [0.4.0]      Function
 });
+```
+
+### Ajax functionality 
+```
+ tail.select('#tail-select', {ajaxUrl: url});
+```
+Widget makes a request to the backend and waits for object like this 
+```
+{
+    "results": [
+        {
+            "id": 1,
+            "text": "Boston"
+        },
+        {
+            "id": 2,
+            "text": "Seatle"
+        },
+        {
+            "id": 3,
+            "text": "New York"
+        },
+        {
+            "id": 4,
+            "text": "Chicago"
+        },
+        {
+            "id": 5,
+            "text": "Washington"
+        },
+        {
+            "id": 6,
+            "text": "San Diego"
+        }
+    ]
+}
 ```
