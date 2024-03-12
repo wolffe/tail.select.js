@@ -28,11 +28,11 @@
         none: "Ninguno",
         empty: "No hay opciones disponibles",
         emptySearch: "No se encontraron opciones",
-        limit: "No puedes seleccionar mas opciones",
+        limit: "No puedes seleccionar más opciones",
         placeholder: "Selecciona una opción...",
-        placeholderMulti: "Selecciona hasta :límite de opciones...",
+        placeholderMulti: "Selecciona hasta :limit opciones...",
         search: "Escribe dentro para buscar...",
-        disabled: "Este campo esta deshabilitado"
+        disabled: "Este campo está deshabilitado"
     });
     return select;
 }));
