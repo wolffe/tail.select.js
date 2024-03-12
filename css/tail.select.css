@@ -145,6 +145,7 @@
     color: var(--tail-select--text);
     border-color: var(--tail-select--meta);
     background-color: transparent;
+    backdrop-filter: blur(2px);
 }
 .tail-select label.all input[type="checkbox"] {
     display: none;
