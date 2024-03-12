@@ -1,4 +1,12 @@
 /**
+ *  Added functionality for AJAX requests, ensuring that checked items are not removed after an AJAX request
+ *  and are left at the top of the result list. Additionally, the list scrolls to the last checked item,
+ *  making it easier to review newly received items.
+ *
+ *  @modified_by Igor Kremin <igor.kremin@gmail.com>
+ *  @modified_date 2024-01-06
+ *  @forked_repo  https://github.com/igor-kremin/tail.select.js/
+ * 
  *  tail.select - The vanilla JavaScript solution to make your <select> fields awesome!
  *
  *  @author     Ciprian Popescu <getbutterfly@gmail.com>
@@ -14,6 +22,7 @@ const tail = {
         const defaultOptions = {
             multiTags: false,
             multiCounter: true,
+            ajaxUrl: null,
             theme: 'light', // light|dark
             classNames: 'tail-default',
             strings: {
@@ -28,7 +37,7 @@ const tail = {
         const opts = { ...defaultOptions, ...options };
 
         // Extract options
-        const { multiTags, multiCounter, theme, classNames, strings } = opts;
+        const { multiTags, multiCounter, theme, classNames, ajaxUrl, strings } = opts;
 
         //
         const originalSelects = document.querySelectorAll(selector);
@@ -55,10 +64,10 @@ const tail = {
             searchInput.type = "text";
             searchInput.classList.add('tail--search');
             searchInput.placeholder = strings.placeholder || "Select an option...";
-
             // Add focus event to change the placeholder
             searchInput.addEventListener("focus", () => {
                 searchInput.placeholder = strings.search || "Type in to search...";
+                searchInput.select();
             });
 
             // Add blur event to revert the placeholder when not focused
@@ -214,13 +223,9 @@ const tail = {
                                 updateCustomTextInput(originalSelect);
                             }
 
-                            //
-
                             optionLabel.appendChild(optionCheckbox);
                             optionLabel.appendChild(optionLabelText);
-
                             optionItem.appendChild(optionLabel);
-
                             nestedOptionsList.appendChild(optionItem);
                         }
 
@@ -260,7 +265,6 @@ const tail = {
                             updateCounter(originalSelect);
                             updateCustomTextInput(originalSelect);
                         }
-                        //
 
                         optionLabel.appendChild(optionCheckbox);
                         optionLabel.appendChild(optionLabelText);
@@ -388,11 +392,7 @@ const tail = {
                 );
 
                 if (option) {
-                    if (checkbox.checked) {
-                        option.selected = true;
-                    } else {
-                        option.selected = false;
-                    }
+                    option.selected = checkbox.checked
 
                     // Trigger change event for the original select
                     const event = new Event("change", { bubbles: true });
@@ -441,16 +441,7 @@ const tail = {
 
                 if (opts.multiCounter) {
                     // Update the counter element
-                    let customId = originalSelect.id;
-                    if (customId) {
-                        let counterElement = document
-                            .querySelector(`.${customId}`)
-                            .querySelector(".tail--counter");
-
-                        if (counterElement) {
-                            counterElement.textContent = count;
-                        }
-                    }
+                    updateCounter(originalSelect);
                 }
             }
 
@@ -459,18 +450,16 @@ const tail = {
                 const optionItems = nestedList.querySelectorAll("div");
 
                 optionItems.forEach((optionItem) => {
-                    const optionCheckbox = optionItem.querySelector(
-                        'input[type="checkbox"]'
-                    );
-                    const optionLabel = optionCheckbox.nextElementSibling.textContent.toLowerCase();
-                    const optgroupItem = optionItem.closest("div");
+                    const optionCheckbox = optionItem.querySelector('input[type="checkbox"]');
+                    const optionText = optionCheckbox.nextElementSibling.textContent.toLowerCase();
+                    const isMatch = optionText.includes(searchTerm);
+                    const isChecked = optionCheckbox.checked;
 
-                    // Hide or show options based on the search term
-                    optionCheckbox.style.display = optionLabel.includes(
-                        searchTerm
-                    )
-                        ? "inline-block"
-                        : "none";
+                    if (isChecked || isMatch) {
+                        optionItem.style.display = "";
+                    } else {
+                        optionItem.style.display = "none";
+                    }
                 });
 
                 optionItems.forEach((optionItem) => {
@@ -543,26 +532,11 @@ const tail = {
                 }
             }
 
-
             function updateCounter(originalSelect) {
-                // Get the custom ID for the current original select
-                let customId = originalSelect.id;
-
-                if (customId) {
-                    // Get the counter element
-                    let counterElement = document
-                        .querySelector(`.${customId}`)
-                        .querySelector(".tail--counter");
-
-                    if (counterElement) {
-                        // Get the count of selected options
-                        const count = Array.from(originalSelect.options).filter(
-                            (opt) => opt.selected
-                        ).length;
-
-                        // Update the counter element
-                        counterElement.textContent = count;
-                    }
+                const counterElement = document.querySelector(`.${originalSelect.id} .tail--counter`);
+                if (counterElement) {
+                    const count = Array.from(originalSelect.options).filter(option => option.selected).length;
+                    counterElement.textContent = count;
                 }
             }
 
@@ -598,6 +572,77 @@ const tail = {
             document.addEventListener("keydown", handleKeyDown);
 
             buildNestedList();
+
+            if (ajaxUrl) {
+                searchInput.addEventListener("input", function() {
+                    loadData(this.value);
+                });
+            }
+            function loadData(searchQuery = "", selectedIds = "") {
+                let url = opts.ajaxUrl;
+                if (!url) return;
+                if (searchQuery) {
+                    url += `?term=${encodeURIComponent(searchQuery)}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => updateOptions(data.results))
+                        .catch(error => console.error('Error loading data:', error));
+                }
+            }
+            function updateOptions(data) {
+                // checkedIds ids from checked options
+                const checkedIds = [];
+                nestedList.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    checkedIds.push(parseInt(checkbox.value, 10));
+                });
+
+                // delete not checked options
+                nestedList.querySelectorAll('.tail--nested-dropdown-item').forEach(item => {
+                    const checkbox = item.querySelector('input[type="checkbox"]');
+                    if (!checkbox.checked) {
+                        const optionToBeRemoved = Array.from(originalSelect.options).find(option => option.value === checkbox.value);
+                        if (optionToBeRemoved) originalSelect.remove(optionToBeRemoved.index);
+                        item.remove();
+                    }
+                });
+
+                data.forEach(item => {
+                    const id = parseInt(item.id, 10);
+                    if (!checkedIds.includes(id)) {
+                        // create options from data
+                        const optionItem = document.createElement("div");
+                        optionItem.classList.add("tail--nested-dropdown-item");
+
+                        const checkbox = document.createElement("input");
+                        checkbox.type = "checkbox";
+                        checkbox.value = id;
+                        checkbox.addEventListener('change', () => {
+                            toggleOption(checkbox);
+                        });
+                        const optionLabel = document.createElement("label");
+                        const optionLabelText = document.createElement("span");
+                        optionLabelText.textContent = item.text;
+
+                        optionLabel.appendChild(checkbox);
+                        optionLabel.appendChild(optionLabelText);
+                        optionItem.appendChild(optionLabel);
+                        nestedList.appendChild(optionItem);
+
+                        const newOption = new Option(item.text, id, false, false);
+                        // also add the option to the original select
+                        originalSelect.add(newOption);
+
+                        // scroll to the last checked checkbox
+                        if (checkedIds.length > 0) {
+                            const lastCheckedCheckbox = nestedList.querySelectorAll('input[type="checkbox"]:checked')[
+                                    nestedList.querySelectorAll('input[type="checkbox"]:checked').length - 1
+                                ].closest(".tail--nested-dropdown-item");
+                            nestedList.scrollTop =  (lastCheckedCheckbox.clientHeight * (checkedIds.length -1 ));
+                        }
+                    }
+                });
+            }
+
         });
     }
 };
