@@ -297,6 +297,11 @@ const tail = {
             }
 
             function toggleAll(originalSelect, toggleAllCheckbox) {
+                if (originalSelect.options.length > multiLimit) {
+                    showErrorMessage(strings.limitExceded || `You can only select ${multiLimit} options!`);
+                    return;
+                }
+
                 const isChecked = toggleAllCheckbox.checked;
                 const optionCheckboxes = nestedList.querySelectorAll(
                     'input[type="checkbox"]'
