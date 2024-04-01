@@ -334,8 +334,8 @@ const tail = {
 
             function toggleOption(checkbox) {
                 if (originalSelect.multiple) {
-                    if (checkSelectConstraints() && checkbox.checked) {
-                        checkbox.checked = false;
+                    if (checkSelectConstraints(checkbox.checked)) {
+                        checkbox.checked = !checkbox.checked;
                         hideDropdown();
                         const errorMessage = originalSelect.selectedOptions.length >= multiLimit
                             ? strings.limitExceded || `You can only select ${multiLimit} options!`
@@ -355,8 +355,8 @@ const tail = {
                 }
             }
 
-            function checkSelectConstraints() {
-                return originalSelect.selectedOptions.length >= multiLimit || originalSelect.selectedOptions.length < minSelectionLimit;
+            function checkSelectConstraints(checked) {
+                return checked ? originalSelect.selectedOptions.length >= multiLimit : originalSelect.selectedOptions.length == minSelectionLimit;
             }
 
             function showErrorMessage(msg) {
