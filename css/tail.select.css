@@ -141,7 +141,7 @@
     border-color: transparent;
     border-radius: 3px;
     box-shadow: none;
-    cursor: pointer;
+
     color: var(--tail-select--text);
     border-color: var(--tail-select--meta);
     background-color: transparent;
