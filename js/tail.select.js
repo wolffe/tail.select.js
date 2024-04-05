@@ -51,8 +51,7 @@ const tail = {
             if (Array.isArray(opts.classNames)) {
                 customDropdown.classList.add(...opts.classNames);
             }
-
-            customDropdown.classList.add(opts.classNames);
+            
             customDropdown.dataset.theme = `tail-theme--${opts.theme}`;
 
             if (originalSelect.multiple) {
