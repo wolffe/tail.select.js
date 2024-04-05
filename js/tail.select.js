@@ -41,6 +41,17 @@ const tail = {
             const customDropdown = document.createElement("div");
             customDropdown.classList.add("tail-select");
             customDropdown.classList.add(originalSelect.id);
+
+            if (typeof opts.classNames === 'string') {
+                customDropdown.classList.add(...opts.classNames.split(' '));
+            }
+            if (typeof opts.classNames === 'boolean' && opts.classNames === true) {
+                customDropdown.classList.add(...originalSelect.classList.value.split(' '));
+            }
+            if (Array.isArray(opts.classNames)) {
+                customDropdown.classList.add(...opts.classNames);
+            }
+
             customDropdown.classList.add(opts.classNames);
             customDropdown.dataset.theme = `tail-theme--${opts.theme}`;
 
