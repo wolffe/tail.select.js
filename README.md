@@ -33,6 +33,7 @@ Features
     -   All / None optgroup selection buttons...
 -   **Translatable**.
 -   **Zero dependencies**. And written in vanilla JavaScript...
+-   **Ajax reqest**
 -   **Free to use**. Because it's MIT licensed <3
 
 Install & Embed
