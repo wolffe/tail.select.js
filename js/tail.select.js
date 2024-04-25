@@ -13,6 +13,8 @@ const tail = {
         // Default options
         const defaultOptions = {
             multiTags: false,
+            multiLimit: Infinity,
+            minSelectionLimit: 0,
             multiCounter: true,
             theme: 'light', // light|dark
             classNames: 'tail-default',
@@ -21,6 +23,8 @@ const tail = {
                 none: "None",
                 placeholder: "Select an option...",
                 search: "Type in to search...",
+                limitExceded: "You can only select {0} options!",
+                minimumReached: "You need to select at least {0} options!",
             }
         };
 
@@ -28,8 +32,18 @@ const tail = {
         const opts = { ...defaultOptions, ...options };
 
         // Extract options
-        const { multiTags, multiCounter, theme, classNames, strings } = opts;
+        const { multiTags, multiLimit, minSelectionLimit, multiCounter, theme, classNames, strings } = opts;
 
+        //Fill placeholder strings
+        if (strings != null) {
+            if (strings.limitExceded != null && multiLimit < Infinity) {
+                strings.limitExceded = strings.limitExceded.replace("{0}", multiLimit);
+            }
+
+            if (strings.minimumReached != null && minSelectionLimit > 0) {
+                strings.minimumReached = strings.minimumReached.replace("{0}", minSelectionLimit);
+            }
+        }
         //
         const originalSelects = document.querySelectorAll(selector);
 
@@ -283,6 +297,11 @@ const tail = {
             }
 
             function toggleAll(originalSelect, toggleAllCheckbox) {
+                if (originalSelect.options.length > multiLimit) {
+                    showErrorMessage(strings.limitExceded || `You can only select ${multiLimit} options!`);
+                    return;
+                }
+
                 const isChecked = toggleAllCheckbox.checked;
                 const optionCheckboxes = nestedList.querySelectorAll(
                     'input[type="checkbox"]'
@@ -315,6 +334,15 @@ const tail = {
 
             function toggleOption(checkbox) {
                 if (originalSelect.multiple) {
+                    if (checkSelectConstraints(checkbox.checked)) {
+                        checkbox.checked = !checkbox.checked;
+                        hideDropdown();
+                        const errorMessage = originalSelect.selectedOptions.length >= multiLimit
+                            ? strings.limitExceded || `You can only select ${multiLimit} options!`
+                            : strings.minimumReached || `You need to select at least ${minSelectionLimit} options!`;
+                        showErrorMessage(errorMessage);
+                        return;
+                    }
                     updateOriginalOptionState(originalSelect, checkbox);
                 } else {
                     // For single-select, uncheck all and check the current one
@@ -325,6 +353,22 @@ const tail = {
                     checkbox.checked = true;
                     updateOriginalOptionState(originalSelect, checkbox);
                 }
+            }
+
+            function checkSelectConstraints(checked) {
+                return checked ? originalSelect.selectedOptions.length >= multiLimit : originalSelect.selectedOptions.length == minSelectionLimit;
+            }
+
+            function showErrorMessage(msg) {
+                const paragraph = document.createElement('p');
+                paragraph.classList.add('mt-2', 'text-sm', 'text-red-600');
+                paragraph.textContent = msg;
+                customDropdown.parentNode.appendChild(paragraph);
+
+                // Remove the paragraph after 2 seconds
+                setTimeout(() => {
+                    customDropdown.parentNode.removeChild(paragraph);
+                }, 2000);
             }
 
             function toggleOptgroup(optgroupCheckbox) {
