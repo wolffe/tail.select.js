@@ -214,6 +214,11 @@ const tail = {
                                 updateCustomTextInput(originalSelect);
                             }
 
+                            // Disable it
+                            if (option.hasAttribute('disabled')) {
+                                optionCheckbox.disabled = true;
+                            }
+
                             //
 
                             optionLabel.appendChild(optionCheckbox);
@@ -260,6 +265,12 @@ const tail = {
                             updateCounter(originalSelect);
                             updateCustomTextInput(originalSelect);
                         }
+                        
+                        // Disable it
+                        if (option.hasAttribute('disabled')) {
+                            optionCheckbox.disabled = true;
+                        }
+
                         //
 
                         optionLabel.appendChild(optionCheckbox);
