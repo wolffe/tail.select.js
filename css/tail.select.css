@@ -123,6 +123,7 @@
 }
 
 .tail-select label.all,
+.tail-select .tail--close,
 .tail-select button.uncheck {
     width: auto;
     height: auto;
@@ -138,24 +139,22 @@
     vertical-align: top;
     border-width: 1px;
     border-style: solid;
-    border-color: transparent;
     border-radius: 3px;
     box-shadow: none;
 
     color: var(--tail-select--text);
     border-color: var(--tail-select--meta);
-    background-color: transparent;
-    backdrop-filter: blur(2px);
+    background-color: var(--tail-select--meta);
 }
 .tail-select label.all input[type="checkbox"] {
     display: none;
 }
 .tail-select label.all:hover,
+.tail-select .tail--close:hover,
 .tail-select button.uncheck:hover {
     color: var(--tail-select--text);
     border-color: var(--tail-select--text);
 }
-
 
 .tail-select > .tail--nested-dropdown {
     position: absolute;
@@ -209,7 +208,6 @@
 .tail-select .tail--nested-dropdown-item:hover {
     background-color: var(--tail-select--selection);
 }
-
 
 .tail--optgroup-label {
     font-weight: 700;
