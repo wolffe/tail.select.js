@@ -16,6 +16,10 @@ const tail = {
             multiCounter: true,
             theme: 'light', // light|dark
             classNames: 'tail-default',
+            buttonAll: true,
+            buttonNone: true,
+            buttonClose: false,
+            buttonCloseText: '✕',
             strings: {
                 all: "All",
                 none: "None",
@@ -115,8 +119,28 @@ const tail = {
             customDropdown.appendChild(tailFloatingToolbar);
             customDropdown.appendChild(nestedList);
 
-            tailFloatingToolbar.appendChild(toggleAllLabel);
-            tailFloatingToolbar.appendChild(uncheckAllButton);
+            if (opts.buttonAll) {
+                tailFloatingToolbar.appendChild(toggleAllLabel);
+            }
+
+            if (opts.buttonNone) {
+                tailFloatingToolbar.appendChild(uncheckAllButton);
+            }
+
+            // Add X/Apply/Close button when multiple selection is available
+            if (originalSelect.multiple && opts.buttonClose) {
+                const closeButton = document.createElement("button");
+                closeButton.type = "button";
+                closeButton.textContent = opts.buttonCloseText || "✕";
+                closeButton.classList.add("tail--close");
+
+                closeButton.addEventListener("click", () => {
+                    hideDropdown();
+                });
+
+                // Append X/Apply/Close button to the floating toolbar
+                tailFloatingToolbar.appendChild(closeButton);
+            }
 
             // Insert custom dropdown after the original select
             originalSelect.insertAdjacentElement("afterend", customDropdown);
@@ -214,6 +238,10 @@ const tail = {
                                 updateCustomTextInput(originalSelect);
                             }
 
+                            // Disable it
+                            if (option.hasAttribute('disabled')) {
+                                optionCheckbox.disabled = true;
+                            }
                             //
 
                             optionLabel.appendChild(optionCheckbox);
@@ -259,6 +287,11 @@ const tail = {
                             optionCheckbox.checked = true;
                             updateCounter(originalSelect);
                             updateCustomTextInput(originalSelect);
+                        }
+
+                        // Disable it
+                        if (option.hasAttribute('disabled')) {
+                            optionCheckbox.disabled = true;
                         }
                         //
 
@@ -324,6 +357,9 @@ const tail = {
                     optionCheckboxes.forEach((cb) => (cb.checked = false));
                     checkbox.checked = true;
                     updateOriginalOptionState(originalSelect, checkbox);
+
+                    // Hide dropdown after selection for single-select
+                    hideDropdown();
                 }
             }
 
