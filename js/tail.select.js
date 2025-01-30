@@ -2,11 +2,11 @@
  *  tail.select - The vanilla JavaScript solution to make your <select> fields awesome!
  *
  *  @author     Ciprian Popescu <getbutterfly@gmail.com>
- *  @version    1.0.2
+ *  @version    1.1.0
  *  @url        https://getbutterfly.com/tail-select/
  *  @github     https://github.com/wolffe/tail.select.js
  *  @license    MIT License
- *  @copyright  Copyright 2020 - 2024 Ciprian Popescu <getbutterfly@gmail.com>
+ *  @copyright  Copyright 2020 - 2025 Ciprian Popescu <getbutterfly@gmail.com>
  */
 const tail = {
     select: function (selector, options = {}) {

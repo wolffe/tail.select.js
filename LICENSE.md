@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 - 2024 wolffe <getbutterfly@gmail.com>
+Copyright (c) 2020 - 2025 wolffe <getbutterfly@gmail.com>
 Copyright (c) 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
