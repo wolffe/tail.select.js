@@ -14,6 +14,8 @@ const tail = {
         const defaultOptions = {
             multiTags: false,
             multiCounter: true,
+            multiLimit: Infinity,
+            minSelectionLimit: 0,
             theme: 'light', // light|dark
             classNames: 'tail-default',
             buttonAll: true,
@@ -25,6 +27,8 @@ const tail = {
                 none: "None",
                 placeholder: "Select an option...",
                 search: "Type in to search...",
+                limitExceded: "You can only select {0} option(s)!",
+                minimumReached: "You need to select at least {0} option(s)!",
             }
         };
 
@@ -32,7 +36,18 @@ const tail = {
         const opts = { ...defaultOptions, ...options };
 
         // Extract options
-        const { multiTags, multiCounter, theme, classNames, strings } = opts;
+        const { multiTags, multiCounter, multiLimit, minSelectionLimit, theme, classNames, buttonAll, buttonNone, buttonClose, buttonCloseText, strings } = opts;
+
+        // Fill placeholder strings
+        if (strings != null) {
+            if (strings.limitExceded != null && multiLimit < Infinity) {
+                strings.limitExceded = strings.limitExceded.replace("{0}", multiLimit);
+            }
+
+            if (strings.minimumReached != null && minSelectionLimit > 0) {
+                strings.minimumReached = strings.minimumReached.replace("{0}", minSelectionLimit);
+            }
+        }
 
         //
         const originalSelects = document.querySelectorAll(selector);
@@ -45,7 +60,18 @@ const tail = {
             const customDropdown = document.createElement("div");
             customDropdown.classList.add("tail-select");
             customDropdown.classList.add(originalSelect.id);
-            customDropdown.classList.add(opts.classNames);
+
+            // Checks if the classNames is an array, boolean or string
+            if (typeof opts.classNames === 'string') {
+                customDropdown.classList.add(...opts.classNames.split(' '));
+            }
+            if (typeof opts.classNames === 'boolean' && opts.classNames === true) {
+                customDropdown.classList.add(...originalSelect.classList.value.split(' '));
+            }
+            if (Array.isArray(opts.classNames)) {
+                customDropdown.classList.add(...opts.classNames);
+            }
+
             customDropdown.dataset.theme = `tail-theme--${opts.theme}`;
 
             if (originalSelect.multiple) {
@@ -316,6 +342,12 @@ const tail = {
             }
 
             function toggleAll(originalSelect, toggleAllCheckbox) {
+                if (originalSelect.options.length > multiLimit) {
+                    showErrorMessage(strings.limitExceded || `You can only select ${multiLimit} option(s)!`);
+
+                    return;
+                }
+
                 const isChecked = toggleAllCheckbox.checked;
                 const optionCheckboxes = nestedList.querySelectorAll(
                     'input[type="checkbox"]'
@@ -348,6 +380,17 @@ const tail = {
 
             function toggleOption(checkbox) {
                 if (originalSelect.multiple) {
+                    if (checkSelectConstraints(checkbox.checked)) {
+                        checkbox.checked = !checkbox.checked;
+                        hideDropdown();
+                        const errorMessage = originalSelect.selectedOptions.length >= multiLimit
+                            ? strings.limitExceded || `You can only select ${multiLimit} option(s)!`
+                            : strings.minimumReached || `You need to select at least ${minSelectionLimit} option(s)!`;
+                        showErrorMessage(errorMessage);
+
+                        return;
+                    }
+
                     updateOriginalOptionState(originalSelect, checkbox);
                 } else {
                     // For single-select, uncheck all and check the current one
@@ -361,6 +404,21 @@ const tail = {
                     // Hide dropdown after selection for single-select
                     hideDropdown();
                 }
+            }
+
+            function checkSelectConstraints(checked) {
+                return checked ? originalSelect.selectedOptions.length >= multiLimit : originalSelect.selectedOptions.length == minSelectionLimit;
+            }
+
+            function showErrorMessage(msg) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = msg;
+                customDropdown.parentNode.appendChild(paragraph);
+
+                // Remove the paragraph after 2 seconds
+                setTimeout(() => {
+                    customDropdown.parentNode.removeChild(paragraph);
+                }, 2000);
             }
 
             function toggleOptgroup(optgroupCheckbox) {
