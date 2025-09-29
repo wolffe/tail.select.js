@@ -556,6 +556,10 @@ const tail = {
                     const optionCheckbox = optionItem.querySelector(
                         'input[type="checkbox"]'
                     );
+
+                    // Skip if no checkbox found in this item
+                    if (!optionCheckbox) return;
+
                     const optionLabel = optionCheckbox.nextElementSibling.textContent.toLowerCase();
                     const optgroupItem = optionItem.closest("div");
 
@@ -581,8 +585,9 @@ const tail = {
                         nestedCheckboxes.length > 0;
 
                     // Show the parent li only if the checkbox or a visible nested checkbox is present
+                    const checkboxDisplay = optionCheckbox ? optionCheckbox.style.display : "none";
                     optgroupItem.style.display =
-                        optionCheckbox.style.display === "inline-block" ||
+                        checkboxDisplay === "inline-block" ||
                             hasVisibleNestedCheckboxes
                             ? "block"
                             : "none";
